@@ -1,0 +1,19 @@
+@import "./features/home/home.css";
+.App-header {
+  background-color: rgb(21, 32, 43);
+  font-size: calc(10px + 2vmin);
+}
+hr {
+  width: 100%;
+}
+@keyframes App-logo-float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
