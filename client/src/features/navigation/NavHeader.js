@@ -1,17 +1,17 @@
 import { Flex, Heading } from "@chakra-ui/layout";
 import { FaTimes } from "react-icons/fa";
-import { useDispatch } from "react-redux";
-import { navigationButtonClicked } from "./navigationSlice";
+import { useTheme } from "../../localisation-context/localisation.context";
 
 const NavHeader = () => {
-  const dispatch = useDispatch();
+  const { onToggle } = useTheme();
+
   return (
     <>
       <Flex justifyContent='space-between' alignItems='center' h='3rem'>
         <Heading p={2} size='lg'>
           Account Info
         </Heading>
-        <FaTimes onClick={() => dispatch(navigationButtonClicked())} />
+        <FaTimes onClick={onToggle} />
       </Flex>
     </>
   );

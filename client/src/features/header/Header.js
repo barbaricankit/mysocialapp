@@ -1,11 +1,10 @@
 import ColorModeSwitcher from "./ColorModeSwitcher";
 import { Flex, Text, HStack } from "@chakra-ui/layout";
 import { Avatar } from "@chakra-ui/avatar";
-import { useDispatch } from "react-redux";
-import { navigationButtonClicked } from "../navigation/navigationSlice";
+import { useTheme } from "../../localisation-context/localisation.context";
 
-const Header = ({ bg, windowWidth }) => {
-  const dispatch = useDispatch();
+const Header = () => {
+  const { onToggle, windowWidth, bodyBg } = useTheme();
 
   return (
     <Flex
@@ -18,13 +17,13 @@ const Header = ({ bg, windowWidth }) => {
       top='0'
       h='3.5rem'
       w='100%'
-      bg={bg}
+      bg={bodyBg}
       alignItems='center'>
       <HStack>
         <Avatar
           size='sm'
           name='Ankit Singhania'
-          onClick={() => windowWidth && dispatch(navigationButtonClicked())}
+          onClick={() => windowWidth && onToggle()}
         />
         <Text fontWeight='1000' fontSize='xl' pl={3}>
           Home

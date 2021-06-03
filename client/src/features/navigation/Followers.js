@@ -1,17 +1,19 @@
 import { Flex, Text } from "@chakra-ui/layout";
+import { useTheme } from "../../localisation-context/localisation.context";
 
-const FollowersAndFollowing = ({ color }) => {
+const FollowersAndFollowing = () => {
+  const { btnColor } = useTheme();
   return (
     <Flex alignItems='center' w='100%' mt={4}>
       <Flex pl={4} alignItems='center'>
         <Text fontWeight='500'>74</Text>
-        <Text fontWeight='400' color={color} fontSize='md' ml={1}>
+        <Text fontWeight='400' color={btnColor} fontSize='md' ml={1}>
           Following
         </Text>
       </Flex>
       <Flex pl={4} alignItems='center'>
         <Text fontWeight='500'>13</Text>
-        <Text fontWeight='400' color={color} fontSize='md' ml={1}>
+        <Text fontWeight='400' color={btnColor} fontSize='md' ml={1}>
           Followers
         </Text>
       </Flex>

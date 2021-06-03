@@ -7,14 +7,17 @@ import { Provider } from "react-redux";
 import * as serviceWorker from "./serviceWorker";
 import { ChakraProvider } from "@chakra-ui/react";
 import { BrowserRouter as Router } from "react-router-dom";
+import { ThemeProvider } from "./localisation-context/localisation.context";
 ReactDOM.render(
   <React.StrictMode>
     <ChakraProvider>
-      <Provider store={store}>
-        <Router>
-          <App />
-        </Router>
-      </Provider>
+      <ThemeProvider>
+        <Provider store={store}>
+          <Router>
+            <App />
+          </Router>
+        </Provider>
+      </ThemeProvider>
     </ChakraProvider>
   </React.StrictMode>,
   document.getElementById("root")

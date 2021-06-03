@@ -1,5 +1,6 @@
 export const posts = [
   {
+    id: 1,
     fullname: "Raunak Tibrewal",
     userName: "@raunaktibrewal",
     description:
@@ -12,6 +13,7 @@ export const posts = [
     attachment: [],
   },
   {
+    id: 2,
     fullname: "Ritesh Mukim",
     userName: "@riteshmukim",
     description: "Getting my first covid vaccine",
@@ -23,6 +25,7 @@ export const posts = [
     attachment: [],
   },
   {
+    id: 3,
     fullname: "Nitesh Nahata",
     userName: "@niteshnahata",
     description: "Getting my first covid vaccine",
@@ -34,6 +37,7 @@ export const posts = [
     attachment: [],
   },
   {
+    id: 4,
     fullname: "Rohan Gupta",
     userName: "@rohangupta",
     description:
@@ -46,6 +50,7 @@ export const posts = [
     attachment: [],
   },
   {
+    id: 5,
     fullname: "Rohan Gupta",
     userName: "@rohangupta",
     description:
@@ -58,6 +63,7 @@ export const posts = [
     attachment: [],
   },
   {
+    id: 6,
     fullname: "Rohan Gupta",
     userName: "@rohangupta",
     description:
@@ -70,6 +76,7 @@ export const posts = [
     attachment: [],
   },
   {
+    id: 7,
     fullname: "Rohan Gupta",
     userName: "@rohangupta",
     description:
@@ -82,6 +89,7 @@ export const posts = [
     attachment: [],
   },
   {
+    id: 8,
     fullname: "Rohan Gupta",
     userName: "@rohangupta",
     description:

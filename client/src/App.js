@@ -1,22 +1,25 @@
 import React from "react";
 import "./App.css";
-
 import Navigation from "./features/navigation/Navigation";
-import { useSelector } from "react-redux";
 import { Route } from "react-router-dom";
 import HomePage from "./features/home/HomePage";
-import { useMediaQuery } from "@chakra-ui/media-query";
+
+import { useTheme } from "./localisation-context/localisation.context";
+import { Slide } from "@chakra-ui/transition";
 
 function App() {
-  const showNavigation = useSelector(
-    (state) => state.navigation.showNavigation
-  );
-  const [windowWidth] = useMediaQuery("(max-width:500px)");
+  const { isOpen, windowWidth } = useTheme();
+
   return (
     <div className='App'>
       <header className='App-header'>
-        {showNavigation && <Navigation windowWidth={windowWidth} />}
-        {!windowWidth && <Navigation windowWidth={windowWidth} />}
+        {windowWidth && (
+          <Slide direction='left' in={isOpen} style={{ zIndex: 10 }}>
+            <Navigation />
+          </Slide>
+        )}
+
+        {!windowWidth && <Navigation />}
       </header>
 
       <Route path='/' component={HomePage} />

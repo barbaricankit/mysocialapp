@@ -1,11 +1,18 @@
 import { IconButton } from "@chakra-ui/button";
 import { Flex, Text } from "@chakra-ui/layout";
 import { FaRegBookmark } from "react-icons/fa";
+import { useTheme } from "../../../localisation-context/localisation.context";
 
-const BookMarks = ({ windowWidth, color }) => {
+const BookMarks = () => {
+  const { windowWidth, btnColor } = useTheme();
   return (
     <Flex alignItems='center' justifyContent='flex-start' w='100%'>
-      <IconButton bg='none' color={color} icon={<FaRegBookmark />} size='lg' />
+      <IconButton
+        bg='none'
+        color={btnColor}
+        icon={<FaRegBookmark />}
+        size='lg'
+      />
       {windowWidth && <Text>BookMarks</Text>}
     </Flex>
   );
