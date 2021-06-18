@@ -2,7 +2,7 @@ import { Flex } from "@chakra-ui/layout";
 import { useTheme } from "../../theme-context/theme.context";
 import { useEffect } from "react";
 import { Box } from "@chakra-ui/react";
-import { UserDetail, NavFooter, NavDetails, NavHeader, TweetButton } from ".";
+import { UserDetail, NavDetails, NavHeader, TweetButton } from ".";
 
 const BrowserNav = () => {
   const {

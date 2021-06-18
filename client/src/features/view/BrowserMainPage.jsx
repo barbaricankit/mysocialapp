@@ -1,12 +1,9 @@
 import { Box } from "@chakra-ui/react";
 import React from "react";
-import { Route, Routes } from "react-router-dom";
+import { Routes } from "react-router-dom";
 import {
   PrivateRoute,
-  Login,
-  SignIn,
   Post,
-  SignUp,
   Notifications,
   Followers,
   Following,

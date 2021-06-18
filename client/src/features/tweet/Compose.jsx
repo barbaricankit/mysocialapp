@@ -2,7 +2,7 @@ import { Avatar } from "@chakra-ui/avatar";
 import { Flex, Stack, Text } from "@chakra-ui/layout";
 import { FaGlobeAmericas } from "react-icons/fa";
 import { useState } from "react";
-import { Box, Button } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 import { ImageUpload, ShowEmoji, PostInput, TweetButton } from ".";
 import { FaSmile } from "react-icons/fa";
 import { useSelector } from "react-redux";
