@@ -1,15 +1,26 @@
-import { IconButton } from "@chakra-ui/button";
 import { Flex, Text } from "@chakra-ui/layout";
 import { FaHashtag } from "react-icons/fa";
-import { useTheme } from "../../../localisation-context/localisation.context";
+import { NavLink } from "react-router-dom";
+import { useTheme } from "../../../theme-context/theme.context";
 
 const Explore = () => {
-  const { windowWidth, btnColor } = useTheme();
+  const { mobileView, btnColor, onToggle, tabView } = useTheme();
   return (
-    <Flex alignItems='center' justifyContent='flex-start' w='100%'>
-      <IconButton bg='none' color={btnColor} icon={<FaHashtag />} size='lg' />
-      {windowWidth && <Text>Explore</Text>}
-    </Flex>
+    <NavLink to='/explorepeople' activeStyle={{ fontWeight: "bold" }}>
+      <Flex
+        alignItems='center'
+        justifyContent='flex-start'
+        w='100%'
+        pt={4}
+        onClick={() => mobileView && onToggle()}>
+        <FaHashtag color={btnColor} fontSize='x-large' />
+        {(mobileView || tabView) && (
+          <Text pl={3} fontSize='larger'>
+            Explore
+          </Text>
+        )}
+      </Flex>
+    </NavLink>
   );
 };
 

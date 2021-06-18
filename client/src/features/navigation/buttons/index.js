@@ -4,4 +4,5 @@ import Explore from "./Explore";
 import Messages from "./Messages";
 import Notifications from "./Notification";
 import Profile from "./Profile";
-export { Home, BookMarks, Explore, Messages, Notifications, Profile };
+import Logout from "./Logout";
+export { Home, BookMarks, Explore, Messages, Notifications, Profile, Logout };

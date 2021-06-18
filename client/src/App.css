@@ -1,10 +1,16 @@
-@import "./features/home/home.css";
-.App-header {
-  background-color: rgb(21, 32, 43);
-  font-size: calc(10px + 2vmin);
+@import "./features/feed/feed.css";
+@import "./features/auth/auth.css";
+@import "./features/view/view.css";
+
+.App {
+  width: 100vw;
+  min-height: 100vh;
 }
 hr {
   width: 100%;
+}
+.nav_slide {
+  z-index: 2;
 }
 @keyframes App-logo-float {
   0% {

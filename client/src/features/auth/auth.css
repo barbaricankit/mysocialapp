@@ -1,0 +1,13 @@
+.input_pwd {
+  position: relative;
+}
+.btn_show_pwd {
+  position: absolute;
+  right: 1rem;
+  top: 0.7rem;
+  cursor: pointer;
+  z-index: 2;
+}
+.red_color {
+  color: red;
+}
