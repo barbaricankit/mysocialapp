@@ -3,7 +3,7 @@ import { Comments, Likes, Retweets, Shares } from ".";
 
 const PostFooter = ({ post }) => {
   return (
-    <Flex justifyContent='space-between' w='100%' alignItems='center'>
+    <Flex justifyContent='space-evenly' w='100%' alignItems='center' ml={4}>
       <Comments post={post} />
       <Retweets post={post} />
       <Likes post={post} />

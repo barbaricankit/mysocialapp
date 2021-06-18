@@ -5,6 +5,8 @@ import UserAvatar from "../UserAvatar";
 
 const Post = ({ post }) => {
   const { username } = useParams();
+
+  console.log({ post });
   return (
     <Box key={post.id}>
       <Flex w='100%' p={3} mb={3}>

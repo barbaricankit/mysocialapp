@@ -17,7 +17,7 @@ import {
   UsersToFollow,
 } from "./features/view";
 import { Notifications, Profile } from "./features/view/index";
-import { Post } from "./features";
+import { Post } from "./features/posts/index";
 
 function App() {
   const { mobileView, tabView } = useTheme();

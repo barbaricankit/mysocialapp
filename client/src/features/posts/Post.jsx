@@ -1,8 +1,9 @@
 import { Avatar, Box, Flex } from "@chakra-ui/react";
 import { useLocation } from "react-router-dom";
 import moment from "moment";
-import { PostFullDate, PostHeader, PostUserDetails } from ".";
-import { PostDescription } from "../utils";
+import { PostFullDate, PostHeader, PostUserDetails, Reply } from ".";
+import { PostDescription, PostFooter } from "../utils";
+
 moment.locale();
 
 const Post = ({ btnColor, post }) => {
@@ -25,6 +26,12 @@ const Post = ({ btnColor, post }) => {
         <PostDescription post={POST} />
       </Box>
       <PostFullDate />
+      <hr />
+      <Box p={2}>
+        <PostFooter post={POST} />
+      </Box>
+      <hr />
+      <Reply post={POST} />
     </>
   );
 };
