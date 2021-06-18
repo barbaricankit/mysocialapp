@@ -6444,7 +6444,7 @@
   "resolved" "https://registry.npmjs.org/hey-listen/-/hey-listen-1.0.8.tgz"
   "version" "1.0.8"
 
-"history@>=5":
+"history@^5.0.0", "history@>=5":
   "integrity" "sha512-3NyRMKIiFSJmIPdq7FxkNMJkQ7ZEtVblOQ38VtKaA0zZMW1Eo6Q6W8oDKEflr1kNNTItSnk4JMCO1deeSgbLLg=="
   "resolved" "https://registry.npmjs.org/history/-/history-5.0.0.tgz"
   "version" "5.0.0"
