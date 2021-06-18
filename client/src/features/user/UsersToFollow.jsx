@@ -1,10 +1,7 @@
-import { Box, Button, Heading } from "@chakra-ui/react";
-import { Flex } from "@chakra-ui/layout";
-import UserAvatar from "../utils/UserAvatar";
-import { UserName } from "../navigation";
+import { Box, Heading } from "@chakra-ui/react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchUserToFollow } from "./userSlice";
+import { fetchUserToFollow, UsersToFollowDetails, Loader } from ".";
 
 const UsersToFollow = () => {
   const {
@@ -17,20 +14,23 @@ const UsersToFollow = () => {
       dispatch(fetchUserToFollow(token));
     }
   });
+
   return (
-    <Box>
-      <Heading size='md'>You might follow</Heading>
-      {usersToFollow?.map((user) => (
-        <Box key={user._id}>
-          <Flex>
-            <UserAvatar name={user.firstname + " " + user.lastname} />
-            <UserName user={user} />
-            <Button>Follow</Button>
-          </Flex>
-          <hr />
-        </Box>
-      ))}
-    </Box>
+    <>
+      <Loader status={status} />
+
+      <Box>
+        <Heading size='md' m={2}>
+          You might follow
+        </Heading>
+
+        {usersToFollow?.map((user) => (
+          <Box key={user._id}>
+            <UsersToFollowDetails user={user} />
+          </Box>
+        ))}
+      </Box>
+    </>
   );
 };
 

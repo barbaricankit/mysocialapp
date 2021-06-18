@@ -9,7 +9,15 @@ import BrowserView from "./features/view/BrowserView";
 import { useTheme } from "./theme-context/theme.context";
 import { Box, useColorModeValue } from "@chakra-ui/react";
 import MobileView from "./features/view/MobileView";
-import { PrivateRoute } from "./features/view";
+import {
+  BrowserFeed,
+  Followers,
+  Following,
+  PrivateRoute,
+  UsersToFollow,
+} from "./features/view";
+import { Notifications, Profile } from "./features/view/index";
+import { Post } from "./features";
 
 function App() {
   const { mobileView, tabView } = useTheme();
@@ -18,12 +26,39 @@ function App() {
   return (
     <Box className='App' bg={bg}>
       {mobileView && <MobileView />}
-      {tabView && <PrivateRoute path='/feed' element={<BrowserView />} />}
       {tabView && (
         <Routes>
           <Route path='/' element={<Login />} />
           <Route path='/signin' element={<SignIn />} />
           <Route path='/signup' element={<SignUp />} />
+          <PrivateRoute
+            path='/feed'
+            element={<BrowserView element={<BrowserFeed />} />}
+          />
+          <PrivateRoute
+            path='/explorepeople'
+            element={<BrowserView element={<UsersToFollow />} />}
+          />
+          <PrivateRoute
+            path='/:username'
+            element={<BrowserView element={<Profile />} />}
+          />
+          <PrivateRoute
+            path='/:username/status/:id'
+            element={<BrowserView element={<Post />} />}
+          />
+          <PrivateRoute
+            path='/:userId/notifications'
+            element={<BrowserView element={<Notifications />} />}
+          />
+          <PrivateRoute
+            path='/:username/followers'
+            element={<BrowserView element={<Followers />} />}
+          />
+          <PrivateRoute
+            path='/:username/following'
+            element={<BrowserView element={<Following />} />}
+          />
         </Routes>
       )}
     </Box>

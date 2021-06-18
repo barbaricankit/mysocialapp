@@ -1,6 +1,6 @@
 import { Box } from "@chakra-ui/react";
 import React from "react";
-import { Routes } from "react-router-dom";
+import { Routes,Route } from "react-router-dom";
 import {
   PrivateRoute,
   Post,
@@ -19,16 +19,16 @@ const BrowserMainPage = () => {
         {/* <Route path='/' element={<Login />} />
         <Route path='/signin' element={<SignIn />} />
         <Route path='/signup' element={<SignUp />} /> */}
-        <PrivateRoute path='/feed' element={<BrowserFeed />} />
-        <PrivateRoute path='/explorepeople' element={<UsersToFollow />} />
-        <PrivateRoute path='/:username' element={<Profile />} />
-        <PrivateRoute path='/:username/status/:id' element={<Post />} />
-        <PrivateRoute
+        <Route path='/feed' element={<BrowserFeed />} />
+        <Route path='/explorepeople' element={<UsersToFollow />} />
+        <Route path='/:username' element={<Profile />} />
+        <Route path='/:username/status/:id' element={<Post />} />
+        <Route
           path='/:userId/notifications'
           element={<Notifications />}
         />
-        <PrivateRoute path='/:username/followers' element={<Followers />} />
-        <PrivateRoute path='/:username/following' element={<Following />} />
+        <Route path='/:username/followers' element={<Followers />} />
+        <Route path='/:username/following' element={<Following />} />
       </Routes>
     </Box>
   );

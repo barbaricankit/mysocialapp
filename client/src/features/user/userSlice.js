@@ -15,7 +15,19 @@ export const fetchUserToFollow = createAsyncThunk(
     return response.data;
   }
 );
-
+export const postFollowedUser = createAsyncThunk(
+  "post/followedUser",
+  async (postData) => {
+    const { token, followId } = postData;
+    const response = await axios({
+      method: "POST",
+      url: `${URL}/follow`,
+      headers: { Authorization: `Bearer ${token}` },
+      data: { followId },
+    });
+    return response.data;
+  }
+);
 const userSlice = createSlice({
   name: "user",
   initialState: {
@@ -34,6 +46,22 @@ const userSlice = createSlice({
       }
     },
     [fetchUserToFollow.rejected]: (state, action) => {
+      state.status = "error";
+      state.error = "Something went wrong, please try again later";
+      console.log(action.error.message);
+    },
+    [postFollowedUser.pending]: (state) => {
+      state.status = "loading";
+    },
+    [postFollowedUser.fulfilled]: (state, action) => {
+      if (action.payload.success) {
+        state.status = "success";
+        state.usersToFollow = state.usersToFollow.filter(
+          (user) => user._id !== action.payload.followId
+        );
+      }
+    },
+    [postFollowedUser.rejected]: (state, action) => {
       state.status = "error";
       state.error = "Something went wrong, please try again later";
       console.log(action.error.message);
