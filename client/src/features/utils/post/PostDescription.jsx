@@ -12,8 +12,6 @@ const PostDescription = ({ post }) => {
           <Image
             src={post.attachment?.secure_url}
             alt={post.attachment?.original_filename}
-            w='320px'
-            h='240px'
             pt={2}
           />
         )}
