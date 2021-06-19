@@ -21,6 +21,17 @@ const profileSlice = createSlice({
     error: "",
     posts: [],
   },
+  reducers: {
+    userLikedProfilePost: (state, action) => {
+      console.log({ action, posts: state.posts });
+      state.posts.forEach((post, index) => {
+        if (post._id.toString() === action.payload.post._id.toString()) {
+          console.log(state.posts[index]._id, action.payload.post._id);
+          state.posts[index].likes = action.payload.post.likes;
+        }
+      });
+    },
+  },
   extraReducers: {
     [fetchPosts.pending]: (state) => {
       state.status = "loading";
@@ -38,5 +49,7 @@ const profileSlice = createSlice({
     },
   },
 });
+
+export const { userLikedProfilePost } = profileSlice.actions;
 
 export default profileSlice.reducer;

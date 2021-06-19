@@ -1,18 +1,13 @@
 import { Flex, Text } from "@chakra-ui/react";
-import { useLocation } from "react-router-dom";
 import moment from "moment";
 moment.locale();
 
-const PostFullDate = () => {
-  const { state } = useLocation();
-
-  const POST = state.data;
-  console.log({ state });
+const PostFullDate = ({ post }) => {
   return (
     <>
-      <Flex pl={4}>
+      <Flex>
         <Text m={3} alignSelf='flex-start' fontSize='sm'>
-          {moment(POST.updatedAt).format("lll")}
+          {moment(post?.createdAt).format("lll")}
         </Text>
       </Flex>
     </>

@@ -3,4 +3,5 @@ import Post from "./Post";
 import PostHeader from "./PostHeader";
 import PostUserDetails from "./PostUserDetails";
 import Reply from "./Reply";
-export { PostFullDate, PostHeader, PostUserDetails, Post, Reply };
+import Comment from "./Comment";
+export { PostFullDate, PostHeader, PostUserDetails, Post, Reply, Comment };

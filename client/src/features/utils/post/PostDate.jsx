@@ -15,9 +15,9 @@ moment.updateLocale("en", {
 });
 const PostDate = ({ post }) => {
   const { btnColor } = useTheme();
-  const postDate = moment(post.updatedAt).startOf("minute").fromNow();
+  const postDate = moment(post.createdAt).startOf("minute").fromNow();
   const date = postDate.includes("day")
-    ? moment(post.updatedAt).format("ll").split(",")[0]
+    ? moment(post.createdAt).format("ll").split(",")[0]
     : postDate;
 
   return (

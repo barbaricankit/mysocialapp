@@ -6,10 +6,10 @@ const PostUserDetails = ({ post }) => {
   return (
     <Flex flexDir='column'>
       <Text fontWeight='500'>
-        {post.user.firstname + " " + post.user.lastname}
+        {post?.user?.firstname + " " + post?.user?.lastname}
       </Text>
       <Text fontWeight='300' color={btnColor}>
-        @{post.user.username}
+        @{post?.user?.username}
       </Text>
     </Flex>
   );

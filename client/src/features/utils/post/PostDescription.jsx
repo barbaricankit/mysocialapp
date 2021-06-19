@@ -1,17 +1,17 @@
 import { Text, Box } from "@chakra-ui/layout";
 import { Image } from "@chakra-ui/react";
 
-const PostDescription = ({ post }) => {
+const PostDescription = ({ post, size }) => {
   return (
     <Box alignSelf='flex-start'>
       <Box>
-        <Text mt={0} fontSize='sm'>
-          {post.description}
+        <Text mt={0} fontSize={size}>
+          {post?.description}
         </Text>
-        {post.attachment && (
+        {post?.attachment && (
           <Image
-            src={post.attachment?.secure_url}
-            alt={post.attachment?.original_filename}
+            src={post?.attachment?.secure_url}
+            alt={post?.attachment?.original_filename}
             pt={2}
           />
         )}

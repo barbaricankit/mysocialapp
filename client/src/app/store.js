@@ -7,6 +7,7 @@ import notificationReducer from "../features/notification/notificationSlice";
 import tweetReducer from "../features/tweet/tweetSlice";
 import profileReducer from "../features/profile/profileSlice";
 import userReducer from "../features/user/userSlice";
+import postReducer from "../features/posts/postSlice";
 export const store = configureStore({
   reducer: {
     auth: authReducer,
@@ -17,5 +18,6 @@ export const store = configureStore({
     following: followingReducer,
     profile: profileReducer,
     user: userReducer,
+    post: postReducer,
   },
 });

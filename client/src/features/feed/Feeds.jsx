@@ -23,7 +23,7 @@ const Feeds = ({ bg }) => {
       <Loader status={status} />
       <Error status={status} error={error} />
       {feeds.map((post) => (
-        <Post post={post} key={post._id} />
+        <Post post={post} key={post._id} page='feeds' />
       ))}
     </Box>
   );

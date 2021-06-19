@@ -9,16 +9,7 @@ export const fetchFeeds = createAsyncThunk("fetch/feed", async (token) => {
   });
   return response.data;
 });
-export const postLikePost = createAsyncThunk("feed/post", async (postData) => {
-  const { token, postId } = postData;
-  const response = await axios({
-    method: "post",
-    url: `${URL}/liked/post`,
-    headers: { Authorization: `Bearer ${token}` },
-    data: { postId },
-  });
-  return response.data;
-});
+
 const feedSlice = createSlice({
   name: "feeds",
   initialState: {
@@ -30,6 +21,15 @@ const feedSlice = createSlice({
     addNewFeed: (state, action) => {
       state.feeds = [action.payload.feed, ...state.feeds];
       state.status = "idle";
+    },
+    userLikedFeedPost: (state, action) => {
+      console.log({ action });
+      state.feeds.forEach((feed, index) => {
+        if (feed._id.toString() === action.payload.post._id.toString()) {
+          console.log(state.feeds[index]._id, action.payload.post._id);
+          state.feeds[index].likes = action.payload.post.likes;
+        }
+      });
     },
   },
   extraReducers: {
@@ -49,27 +49,8 @@ const feedSlice = createSlice({
       state.error = "Something went wrong. Please try again later";
       console.log(action.error.message);
     },
-
-    [postLikePost.fulfilled]: (state, action) => {
-      if (action.payload.success) {
-        state.status = "success";
-        state.feeds.forEach((feed, index) => {
-          if (feed._id.toString() === action.payload.post._id.toString()) {
-            console.log(state.feeds[index]._id, action.payload.post._id);
-            state.feeds[index].likes = action.payload.post.likes;
-          }
-        });
-      } else {
-        state.status = "error";
-      }
-    },
-    [postLikePost.rejected]: (state, action) => {
-      state.status = "error";
-      state.error = "Something went wrong. Please try again later";
-      console.log(action.error.message);
-    },
   },
 });
-export const { addNewFeed } = feedSlice.actions;
+export const { addNewFeed, userLikedFeedPost } = feedSlice.actions;
 
 export default feedSlice.reducer;

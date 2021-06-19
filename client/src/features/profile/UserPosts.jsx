@@ -30,7 +30,7 @@ const UserPosts = ({ bg }) => {
       </Flex>
       <hr />
       {posts.map((post) => (
-        <Post post={post} key={post._id} />
+        <Post post={post} key={post._id} page='profile' />
       ))}
     </Box>
   );
