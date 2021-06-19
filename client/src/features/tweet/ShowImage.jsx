@@ -14,12 +14,7 @@ const ShowImage = () => {
       <Error status={uploadStatus} />
       {postImage && (
         <Box position='relative'>
-          <Image
-            src={postImage.secure_url}
-            alt={postImage.original_filename}
-            w='320px'
-            h='240px'
-          />
+          <Image src={postImage.secure_url} alt={postImage.original_filename} />
           <FaTimesCircle
             color='black'
             className='delete_img'
