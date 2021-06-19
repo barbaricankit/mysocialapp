@@ -1,5 +1,5 @@
 import { Box, Grid } from "@chakra-ui/react";
-import { BrowserLeftSideBar, BrowserRightSideBar, BrowserMainPage } from ".";
+import { BrowserLeftSideBar, BrowserRightSideBar } from ".";
 
 const BrowserView = ({ element }) => {
   return (
@@ -12,5 +12,3 @@ const BrowserView = ({ element }) => {
 };
 
 export default BrowserView;
-
-//<PrivateRoute path="/feed" element={<BrowserView element={<BrowserFeed />} />} />

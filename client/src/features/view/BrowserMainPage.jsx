@@ -1,8 +1,7 @@
 import { Box } from "@chakra-ui/react";
 import React from "react";
-import { Routes,Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import {
-  PrivateRoute,
   Post,
   Notifications,
   Followers,
@@ -23,10 +22,7 @@ const BrowserMainPage = () => {
         <Route path='/explorepeople' element={<UsersToFollow />} />
         <Route path='/:username' element={<Profile />} />
         <Route path='/:username/status/:id' element={<Post />} />
-        <Route
-          path='/:userId/notifications'
-          element={<Notifications />}
-        />
+        <Route path='/:userId/notifications' element={<Notifications />} />
         <Route path='/:username/followers' element={<Followers />} />
         <Route path='/:username/following' element={<Following />} />
       </Routes>
