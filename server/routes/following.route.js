@@ -16,6 +16,7 @@ router
     if (followedUser) {
       await user.following.push(followedId);
       await user.save();
+      user.password = undefined;
       res.json({ success: true, user });
     } else {
       res.json({ success: false, message: "Invalid followed Id" });

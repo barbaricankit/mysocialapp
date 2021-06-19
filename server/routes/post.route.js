@@ -24,6 +24,8 @@ router
     async (req, res) => {
       const { notification, post, user } = req;
       const newPost = await post.populate("user").execPopulate();
+      newPost.user.password = undefined;
+      user.password = undefined;
       res.json({ success: true, notification, post: newPost, user });
     }
   );

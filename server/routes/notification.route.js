@@ -1,7 +1,6 @@
 const express = require("express");
 const Notifications = require("../models/notification.model");
 const router = express.Router();
-const Users = require("../models/user.model");
 
 router.route("/").get(async (req, res) => {
   const { user } = req;
@@ -14,6 +13,9 @@ router.route("/").get(async (req, res) => {
     (notification1, notification2) =>
       notification2.createdAt - notification1.createdAt
   );
+  for (let notification of notifications?.notifications) {
+    notification.user.password = undefined;
+  }
   res.json({ success: true, notifications });
 });
 

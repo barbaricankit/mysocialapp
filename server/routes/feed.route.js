@@ -6,13 +6,10 @@ router.route("/").get(async (req, res) => {
   const { user } = req;
   const userPosts = await Posts.find({ user: user._id }).populate("user");
   let feeds = [...userPosts];
-
   const followingPosts = await Posts.find({
     user: { $in: user.following },
   }).populate("user");
-  // console.log({ followingPosts });
   feeds = [...feeds, ...followingPosts];
-
   feeds.sort((post1, post2) => post2.createdAt - post1.createdAt);
   feeds.forEach((feed) => (feed.user.password = undefined));
   res.json({ success: true, feeds });

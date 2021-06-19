@@ -17,7 +17,7 @@ router
     const followerUser = await Users.findById(followerId);
     if (followerUser) {
       await user.followers.push(followerId);
-
+      user.password = undefined;
       await user.save();
       res.json({ success: true, user });
     } else {

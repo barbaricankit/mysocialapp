@@ -12,7 +12,6 @@ const verifyToken = async (req, res, next) => {
     const user = await Users.findById(userId);
 
     if (user) {
-      user.password = undefined;
       req.user = user;
       req.token = token;
       req.userId = userId;

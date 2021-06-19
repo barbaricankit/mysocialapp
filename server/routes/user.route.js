@@ -12,7 +12,7 @@ router.route("/signup").post(newUser, createToken, async (req, res) => {
 
 router.route("/login").get(verifyToken, async (req, res) => {
   const { token, user } = req;
-
+  user.password = undefined;
   res.json({ success: true, user, token });
 });
 router
