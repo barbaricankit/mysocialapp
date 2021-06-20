@@ -1,7 +1,7 @@
 import {
   Comments,
   Likes,
-  Shares,
+  Bookmark,
   Retweets,
   Post,
   PostDate,
@@ -15,7 +15,7 @@ import {
 export {
   Comments,
   Likes,
-  Shares,
+  Bookmark,
   Retweets,
   Post,
   PostDate,

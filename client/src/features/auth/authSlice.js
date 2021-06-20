@@ -35,6 +35,19 @@ export const verifyToken = createAsyncThunk("/auth/token", async (token) => {
   });
   return response.data;
 });
+export const updateProfile = createAsyncThunk(
+  "/post/profiledetails",
+  async (postData) => {
+    const { token, user } = postData;
+    const response = await axios({
+      method: "POST",
+      url: `${URL}/user/details`,
+      headers: { Authorization: `Bearer ${token}` },
+      data: { user },
+    });
+    return response.data;
+  }
+);
 const authSlice = createSlice({
   name: "auth",
   initialState: {
@@ -74,6 +87,9 @@ const authSlice = createSlice({
       state.user = "";
       state.status = "idle";
       localStorage.removeItem("token");
+    },
+    userBookmarkedPost: (state, action) => {
+      state.user.bookmarks = action.payload.bookmarks;
     },
   },
   extraReducers: {
@@ -126,6 +142,24 @@ const authSlice = createSlice({
       state.status = "error";
       console.log(action.error.message);
     },
+    [updateProfile.pending]: (state) => {
+      state.status = "loading";
+    },
+    [updateProfile.fulfilled]: (state, action) => {
+      if (action.payload.success) {
+        const { user } = action.payload;
+        state.status = "success";
+        state.user = user;
+      } else {
+        state.status = "error";
+        state.error = action.payload.message;
+      }
+    },
+    [updateProfile.rejected]: (state, action) => {
+      state.status = "error";
+      state.error = "Something went wrong, cannot update the profile";
+      console.log(action.error.message);
+    },
   },
 });
 
@@ -137,5 +171,6 @@ export const {
   enteredEmail,
   reEnteredPassword,
   userClickedLogOut,
+  userBookmarkedPost,
 } = authSlice.actions;
 export default authSlice.reducer;

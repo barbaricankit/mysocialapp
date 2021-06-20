@@ -5,7 +5,7 @@ import { useTheme } from "../../../theme-context/theme.context";
 import { userLikedFeedPost } from "../../feed/feedSlice";
 import { userLikedComment } from "../../posts/postSlice";
 import { userLikedProfilePost } from "../../profile/profileSlice";
-import { likeComment, likePost } from "./postLike";
+import { likeComment, likePost } from ".";
 
 const Likes = ({ post, isComment, page }) => {
   const { btnColor } = useTheme();

@@ -1,17 +1,4 @@
-import FeedHeader from "./FeedHeader";
-import FeedFooter from "./FeedFooter";
-import { Comments, Likes, Retweets, Shares } from "../utils/buttons";
-import FeedBody from "./FeedBody";
+import { Comments, Likes, Retweets, Bookmark } from "../utils/buttons";
 import FeedPage from "./FeedPage";
 import Feeds from "./Feeds";
-export {
-  FeedHeader,
-  Comments,
-  Likes,
-  Retweets,
-  Shares,
-  FeedFooter,
-  FeedBody,
-  FeedPage,
-  Feeds,
-};
+export { Comments, Likes, Retweets, Bookmark, FeedPage, Feeds };

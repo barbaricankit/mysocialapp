@@ -4,10 +4,10 @@ import {
   Comments,
   Likes,
   Retweets,
-  Shares,
+  Bookmark,
   PostDescription,
   PostFooter,
-  // PostFullDate,
+  PostFullDate,
   PostUser,
 } from "./post/index";
 import Error from "./Error";
@@ -15,13 +15,13 @@ import Loader from "./Loader";
 export {
   Comments,
   Likes,
-  Shares,
+  Bookmark,
   Retweets,
   Post,
   PostDate,
   PostDescription,
   PostFooter,
-  // PostFullDate,
+  PostFullDate,
   PostUser,
   Error,
   Loader,

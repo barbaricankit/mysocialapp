@@ -18,6 +18,7 @@ import {
 } from "./features/view";
 import { Notifications, Profile } from "./features/view/index";
 import { Post } from "./features/posts/index";
+import BookMarksPage from "./features/navigation/BookMarksPage";
 
 function App() {
   const { mobileView, tabView } = useTheme();
@@ -58,6 +59,10 @@ function App() {
           <PrivateRoute
             path='/:username/following'
             element={<BrowserView element={<Following />} />}
+          />
+          <PrivateRoute
+            path='/:username/bookmarks'
+            element={<BrowserView element={<BookMarksPage />} />}
           />
         </Routes>
       )}

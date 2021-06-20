@@ -23,7 +23,6 @@ const feedSlice = createSlice({
       state.status = "idle";
     },
     userLikedFeedPost: (state, action) => {
-      console.log({ action });
       state.feeds.forEach((feed, index) => {
         if (feed._id.toString() === action.payload.post._id.toString()) {
           console.log(state.feeds[index]._id, action.payload.post._id);

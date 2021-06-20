@@ -1,6 +1,6 @@
 import PostDate from "./PostDate";
 import PostDescription from "./PostDescription";
-import { Comments, Likes, Retweets, Shares } from "../buttons";
+import { Comments, Likes, Retweets, Bookmark } from "../buttons";
 import PostFooter from "./PostFooter";
 import PostFullDate from "./PostFullDate";
 import PostUser from "./PostUser";
@@ -11,7 +11,7 @@ export {
   Comments,
   Likes,
   Retweets,
-  Shares,
+  Bookmark,
   PostDescription,
   PostFooter,
   PostFullDate,

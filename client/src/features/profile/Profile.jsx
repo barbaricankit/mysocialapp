@@ -1,20 +1,12 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { ProfileHeader, fetchPosts, ProfileDetails, UserPosts } from ".";
+import { ProfileHeader, ProfileDetails } from ".";
+import Headers from "./Headers";
 
 const Profile = () => {
-  const { status } = useSelector((state) => state.profile);
-  const dispatch = useDispatch();
-  useEffect(() => {
-    if (status === "idle") {
-      dispatch(fetchPosts);
-    }
-  });
   return (
     <>
       <ProfileHeader />
       <ProfileDetails />
-      <UserPosts />
+      <Headers />
     </>
   );
 };

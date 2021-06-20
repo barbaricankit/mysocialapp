@@ -1,5 +1,5 @@
 import { Flex } from "@chakra-ui/layout";
-import { Comments, Likes, Retweets, Shares } from ".";
+import { Comments, Likes, Retweets, Bookmark } from ".";
 
 const PostFooter = ({ post, isComment, page }) => {
   return (
@@ -7,7 +7,7 @@ const PostFooter = ({ post, isComment, page }) => {
       <Comments post={post} page={page} />
       <Retweets post={post} />
       <Likes post={post} isComment={isComment} page={page} />
-      <Shares post={post} />
+      <Bookmark post={post} />
     </Flex>
   );
 };
