@@ -7,6 +7,18 @@ const {
 const { addNewPost, postNotification } = require("../middleware/post");
 const Posts = require("../models/post.model");
 
+router.param("postId", async (req, res, next, postId) => {
+  req.postId = postId;
+  next();
+});
+
+router.route("/:postId").get(async (req, res) => {
+  const { postId } = req;
+  const post = await Posts.findById(postId).populate("user");
+  post.user.password = undefined;
+  res.json({ success: true, post });
+});
+
 router
   .route("/")
   .get(async (req, res) => {

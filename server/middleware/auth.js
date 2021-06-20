@@ -27,7 +27,7 @@ const verifyToken = async (req, res, next) => {
 const createToken = async (req, res, next) => {
   const { userId } = req;
   const token = jwt.sign({ userId }, SECRET_KEY, {
-    expiresIn: "24h",
+    expiresIn: "365d",
   });
   req.token = token;
   next();

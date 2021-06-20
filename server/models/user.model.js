@@ -1,7 +1,4 @@
 const mongoose = require("mongoose");
-const Posts = require("./post.model");
-const Notifications = require("./notification.model");
-const Messages = require("./message.model");
 const { Schema } = mongoose;
 
 const userSchema = new Schema({
@@ -10,9 +7,10 @@ const userSchema = new Schema({
   firstname: { type: String, required: [true, "Firstname is required"] },
   lastname: { type: String, required: [true, "LastName is required"] },
   email: { type: String, required: [true, "Email is required"] },
+  bio: String,
   followers: [{ type: Schema.Types.ObjectId, ref: "User" }],
   following: [{ type: Schema.Types.ObjectId, ref: "User" }],
-  messages: [{ type: Schema.Types.ObjectId, ref: Messages }],
+  bookmarks: [{ type: Schema.Types.ObjectId, ref: "Post" }],
 });
 
 const Users = mongoose.model("User", userSchema);

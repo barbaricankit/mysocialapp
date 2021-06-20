@@ -1,7 +1,11 @@
 const express = require("express");
 const router = express.Router();
 
-const { newUser, validateCredentials } = require("../middleware/user");
+const {
+  newUser,
+  validateCredentials,
+  updateUserDetails,
+} = require("../middleware/user");
 const { createToken, verifyToken } = require("../middleware/auth");
 
 router.route("/signup").post(newUser, createToken, async (req, res) => {
@@ -26,4 +30,5 @@ router
       user,
     });
   });
+router.route("/details").post(verifyToken, updateUserDetails);
 module.exports = router;

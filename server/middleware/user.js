@@ -38,4 +38,17 @@ const validateCredentials = async (req, res, next) => {
     res.json({ success: false, message: "Invalid Username" });
   }
 };
-module.exports = { newUser, validateCredentials };
+
+const updateUserDetails = async (req, res, next) => {
+  const { user } = req;
+  const { firstname, lastname, email, bio } = req.body.user;
+  user.firstname = firstname;
+  user.lastname = lastname;
+  user.email = email;
+  user.bio = bio;
+
+  await user.save();
+  user.password = undefined;
+  res.json({ success: true, user });
+};
+module.exports = { newUser, validateCredentials, updateUserDetails };

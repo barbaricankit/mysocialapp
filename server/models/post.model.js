@@ -1,17 +1,16 @@
 const mongoose = require("mongoose");
-const Users = require("./user.model");
-const Comments = require("./comment.model");
 const { Schema } = mongoose;
 
 const postSchema = new Schema(
   {
     user: { type: Schema.Types.ObjectId, ref: "User" },
     description: String,
-    comments: { type: Schema.Types.ObjectId, ref: Comments },
+    comments: Number,
     likes: [{ type: Schema.Types.ObjectId, ref: "User" }],
     retweet: Number,
-    share: Number,
     attachment: { type: Object },
+    createdAt: { type: Date, default: Date.now },
+    updatedAt: { type: Date },
   },
   { timestamps: true }
 );

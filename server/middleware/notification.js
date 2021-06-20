@@ -1,9 +1,9 @@
 const Notifications = require("../models/notification.model");
 
 const addFirstNotification = async (req, res, next) => {
-  const { user, notification_type, notifiedUserIds, post } = req;
+  const { user, notification_type, notifiedUserIds, postId } = req;
   req.notifiedUsers = [];
-  console.log(notifiedUserIds);
+ 
   for (let notifiedUserId of notifiedUserIds) {
     const notification_user = await Notifications.findOne({
       notifiedUserId,
@@ -17,7 +17,7 @@ const addFirstNotification = async (req, res, next) => {
         notifications: [
           {
             notification_type,
-            post: post._id,
+            post: postId,
             user: user._id,
           },
         ],
@@ -29,12 +29,12 @@ const addFirstNotification = async (req, res, next) => {
   next();
 };
 const addNotification = async (req, res, next) => {
-  const { user, notification_type, notifiedUsers, post } = req;
+  const { user, notification_type, notifiedUsers, postId } = req;
 
   for (let notifiedUser of notifiedUsers) {
     notifiedUser.notifications.push({
       notification_type,
-      post: post._id,
+      post: postId,
       user: user._id,
     });
     await notifiedUser.save();

@@ -1,13 +1,22 @@
 const express = require("express");
-const { likedPost, likeNotification } = require("../middleware/liked");
+const {
+  likedComment,
+  likedPost,
+  likeNotification,
+} = require("../middleware/liked");
 const {
   addFirstNotification,
   addNotification,
 } = require("../middleware/notification");
 const router = express.Router();
 
+router.param("postId", async (req, res, next, postId) => {
+  req.postId = postId;
+  next();
+});
+
 router
-  .route("/post")
+  .route("/post/:postId")
   .post(
     likedPost,
     likeNotification,
@@ -20,4 +29,16 @@ router
     }
   );
 
+router.route("/comment/:postId").post(
+  likedComment,
+  likeNotification,
+  addFirstNotification,
+  addNotification,
+
+  async (req, res) => {
+    const { comment } = req;
+
+    res.json({ success: true, comment });
+  }
+);
 module.exports = router;

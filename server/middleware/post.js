@@ -12,6 +12,7 @@ const addNewPost = async (req, res, next) => {
 
   await newPost.save();
   req.post = newPost;
+  req.postId = newPost._id;
   next();
 };
 
