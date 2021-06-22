@@ -3,13 +3,13 @@ import { useTheme } from "../../theme-context/theme.context";
 import Search from "../user/Search";
 import UsersToFollow from "../user/UsersToFollow";
 import SearchedUserList from "../user/SearchedUserList";
-import { useDispatch, useSelector } from "react-redux";
+import {  useSelector } from "react-redux";
 
 const BrowserRightSideBar = () => {
   const { secondaryColor, borderColor } = useTheme();
   const {
-    user: { status, searchedUserResult },
-    auth: { token },
+    user: { searchedUserResult },
+    
   } = useSelector((state) => state);
   return (
     <Box>

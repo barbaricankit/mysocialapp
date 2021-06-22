@@ -1,6 +1,5 @@
 import { Flex } from "@chakra-ui/layout";
 import { Box, Button, useDisclosure } from "@chakra-ui/react";
-import { Avatar } from "@chakra-ui/avatar";
 import UserName from "../navigation/UserName";
 import FollowersAndFollowing from "../navigation/FollowersAndFollowing";
 import EditProfileModal from "./EditProfile";

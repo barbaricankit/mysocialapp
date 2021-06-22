@@ -1,36 +1,10 @@
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink} from "react-router-dom";
 import { Flex } from "@chakra-ui/layout";
 import { Text } from "@chakra-ui/react";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchFollowing } from "./following/followingSlice";
-import { fetchFollowers } from "./followers/followerSlice";
-import FollowerFollowingHeader from "./FollowerFollowingHeader";
-import { useEffect } from "react";
-const FollowerFollowing = ({user}) => {
-  //const { user } = useSelector((state) => state.auth);
-  const {state}=useLocation()
-  const {
-    following: {
-      status: { followingStatus },
-      followings,
-    },
-    followers: {
-      status: { followerStatus },
-      followers,
-    },
-  } = useSelector((state) => state);
 
-  //const { token } = useSelector((state) => state.auth);
-  //const dispatch = useDispatch();
-  // useEffect(() => {
-  //   if (followingStatus === "idle" || !followings?.length) {
-  //     dispatch(fetchFollowing(token));
-  //   }
-  //   if (followerStatus === "idle" || !followers?.length) {
-  //     dispatch(fetchFollowers(token));
-  //   }
-  //   // eslint-disable-next-line
-  // }, []);
+import FollowerFollowingHeader from "./FollowerFollowingHeader";
+const FollowerFollowing = ({user}) => {
+ 
   return (
     <>
       <FollowerFollowingHeader />

@@ -1,13 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Flex } from "@chakra-ui/layout";
-import { Button } from "@chakra-ui/button";
-import { Avatar, Box, Text } from "@chakra-ui/react";
+import { Box,  } from "@chakra-ui/react";
 import Loader from "../../utils/Loader";
 import Error from "../../utils/Error";
 import FollowerFollowing from "../FollowerFollowing";
 import { useEffect } from "react";
 import { fetchFollowing } from "./followingSlice";
-import { useLocation, useParams } from "react-router";
+import {  useParams } from "react-router";
 import FollowButton from "../FollowButton";
 import UserAvatar from "../../utils/UserAvatar";
 import { UserName } from "../../navigation";

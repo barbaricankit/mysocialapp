@@ -3,7 +3,6 @@ import { useTheme } from "../../theme-context/theme.context";
 import { useEffect } from "react";
 import { Box } from "@chakra-ui/react";
 import { UserDetail, NavDetails, NavHeader, TweetButton } from ".";
-import { RiChatSmileFill } from "react-icons/ri";
 
 const BrowserNav = () => {
   const {
