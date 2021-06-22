@@ -13,7 +13,7 @@ const PostHeader = () => {
       <Flex alignItems='center' p={2} pt={4} w='100%'>
         <BiArrowBack
           fontSize='x-large'
-          onClick={() => navigate(state?.path ? `/${state.path}` : "/feed")}
+          onClick={() => navigate(state?.path ? `/${state.path}` : "/")}
         />
         <Heading ml={3} size='lg'>
           Tweet

@@ -1,9 +1,8 @@
-import { Box, Flex, Text } from "@chakra-ui/react";
+import { Box, Flex, Heading } from "@chakra-ui/react";
 import { BiArrowBack } from "react-icons/bi";
 import { useNavigate } from "react-router";
-import BookmarkPosts from "../profile/BookmarkPosts";
 
-const BookMarksPage = () => {
+const UsersToFollowHeader = () => {
   const navigate = useNavigate();
 
   return (
@@ -11,13 +10,14 @@ const BookMarksPage = () => {
       <Flex alignItems='center' p={2} pt={4} w='100%'>
         <BiArrowBack fontSize='x-large' onClick={() => navigate("/")} />
         <Box pl={4}>
-          <Text fontWeight='500'>BookMarks</Text>
+          <Heading size='md' m={2}>
+            You might follow
+          </Heading>
         </Box>
       </Flex>
       <hr />
-      <BookmarkPosts />
     </>
   );
 };
 
-export default BookMarksPage;
+export default UsersToFollowHeader;

@@ -3,6 +3,7 @@ import { useTheme } from "../../theme-context/theme.context";
 import { useEffect } from "react";
 import { Box } from "@chakra-ui/react";
 import { UserDetail, NavDetails, NavHeader, TweetButton } from ".";
+import { RiChatSmileFill } from "react-icons/ri";
 
 const BrowserNav = () => {
   const {
@@ -40,7 +41,9 @@ const BrowserNav = () => {
 
   return (
     <Box pos='sticky' top='0' zIndex={3} minH='100vh'>
-      <Flex flexDir='column' justifyContent='space-between' h='100vh'>
+       
+      <Flex flexDir='column' justifyContent='space-between' >
+     
         <Flex flexDir='column' ref={navRef} w={navWidth()} bg={bodyBg} p={2}>
           {mobileView && <NavHeader />}
 

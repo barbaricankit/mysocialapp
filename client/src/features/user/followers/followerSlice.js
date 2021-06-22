@@ -6,10 +6,12 @@ const URL = process.env.REACT_APP_SERVER_URL;
 
 export const fetchFollowers = createAsyncThunk(
   "fetch/followers",
-  async (token) => {
+  async (postData) => {
+    const {token,username}=postData
+    const user=username.split("@")[1];
     const response = await axios({
       method: "GET",
-      url: `${URL}/follower`,
+      url: `${URL}/follower/${user}`,
       headers: { Authorization: `Bearer ${token}` },
     });
     return response.data;
@@ -21,6 +23,7 @@ const followerSlice = createSlice({
   initialState: {
     status: "idle",
     followers: [],
+    user:{},
     error: "",
   },
   extraReducers: {
@@ -28,10 +31,12 @@ const followerSlice = createSlice({
       state.status = "loading";
     },
     [fetchFollowers.fulfilled]: (state, action) => {
-      const { followers } = action.payload;
-      if (action.payload.success && followers) {
+      
+      if (action.payload.success) {
+        const { followers,user } = action.payload;
         state.status = "success";
         state.followers = followers;
+        state.user=user
       }
     },
     [fetchFollowers.rejected]: (state, action) => {

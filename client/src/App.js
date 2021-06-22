@@ -29,11 +29,11 @@ function App() {
       {mobileView && <MobileView />}
       {tabView && (
         <Routes>
-          <Route path='/' element={<Login />} />
+          <Route path='/login' element={<Login />} />
           <Route path='/signin' element={<SignIn />} />
           <Route path='/signup' element={<SignUp />} />
           <PrivateRoute
-            path='/feed'
+            path='/'
             element={<BrowserView element={<BrowserFeed />} />}
           />
           <PrivateRoute

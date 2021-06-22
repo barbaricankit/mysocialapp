@@ -8,6 +8,10 @@ const SignInButton = () => {
 
   return (
     <Button
+      m={2}
+      bg='white'
+      color='rgb(29, 161, 242)'
+      _hover='none'
       disabled={username && password ? false : true}
       onClick={() => dispatch(fetchSignInCall({ username, password }))}>
       Sign In

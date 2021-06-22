@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useTheme } from "../../theme-context/theme.context";
 import { postComment } from "./postSlice";
 import { Loader } from "../utils/index";
+import { updateCommentCountInProfilePosts } from "../profile/profileSlice";
+import { updateCommentCountInFeeds } from "../feed/feedSlice";
 const Reply = ({ post }) => {
   const {
     auth: { user, token },
@@ -12,14 +14,18 @@ const Reply = ({ post }) => {
   const [reply, setReply] = useState("");
   const dispatch = useDispatch();
   const replyClick = () => {
-    dispatch(postComment({ token, postId: post._id, description: reply }));
+    const postId = post._id;
+    dispatch(postComment({ token, postId, description: reply }));
+    dispatch(updateCommentCountInProfilePosts({ postId }));
+    dispatch(updateCommentCountInFeeds({ postId }));
+
     setReply("");
   };
   return (
     <>
       <Loader />
       <Flex p={3} justifyContent='space-between'>
-        <Avatar name={user.firstname + " " + user.lastname} />
+        <Avatar name={user.fullname} />
         <Textarea
           value={reply}
           placeholder='Tweet your reply'

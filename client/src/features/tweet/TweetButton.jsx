@@ -23,7 +23,7 @@ const TweetButton = ({ tweet }) => {
     if (status === "success") {
       dispatch(addNewFeed({ feed: post }));
       dispatch(newPost({ tweet: "" }));
-      navigate("/feed");
+      navigate("/");
     }
   }, [status, dispatch, tweet, post, navigate]);
   return (

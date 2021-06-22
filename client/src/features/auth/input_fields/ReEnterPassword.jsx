@@ -14,11 +14,14 @@ const ReEnterPassword = () => {
       <Input
         type={showPassword ? "text" : "password"}
         value={reEnterPassword}
-        placeholder='ReEnter Password'
+        placeholder='Password'
+        bg='white'
+        color='black'
         onChange={(e) => dispatch(reEnteredPassword({ value: e.target.value }))}
       />
       <BsFillEyeFill
         className='btn_show_pwd'
+        color='rgb(29, 161, 242)'
         onClick={() => setShowPassword(!showPassword)}
       />
     </Box>

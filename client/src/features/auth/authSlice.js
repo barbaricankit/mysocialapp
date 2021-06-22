@@ -91,6 +91,19 @@ const authSlice = createSlice({
     userBookmarkedPost: (state, action) => {
       state.user.bookmarks = action.payload.bookmarks;
     },
+    updateUserFollowing: (state, action) => {
+      const { followId } = action.payload;
+      let flag = false;
+      state.user.following.forEach((id, index) => {
+        if (id.toString() === followId.toString()) {
+          state.user.following.splice(index, 1);
+          flag = true;
+        }
+      });
+      if (!flag) {
+        state.user.following.push(followId);
+      }
+    },
   },
   extraReducers: {
     [fetchSignInCall.pending]: (state) => {
@@ -172,5 +185,6 @@ export const {
   reEnteredPassword,
   userClickedLogOut,
   userBookmarkedPost,
+  updateUserFollowing,
 } = authSlice.actions;
 export default authSlice.reducer;

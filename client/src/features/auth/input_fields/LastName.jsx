@@ -11,7 +11,9 @@ const LastName = () => {
       <Input
         type='text'
         value={lastname}
-        placeholder='Enter Lastname'
+        placeholder='Lastname'
+        bg='white'
+        color='black'
         onChange={(e) => dispatch(enteredLastname({ value: e.target.value }))}
       />
     </Box>

@@ -30,6 +30,13 @@ const feedSlice = createSlice({
         }
       });
     },
+    updateCommentCountInFeeds: (state, action) => {
+      state.feeds.forEach((feed) => {
+        if (feed._id === action.payload.postId) {
+          feed.comments += 1;
+        }
+      });
+    },
   },
   extraReducers: {
     [fetchFeeds.pending]: (state) => {
@@ -50,6 +57,7 @@ const feedSlice = createSlice({
     },
   },
 });
-export const { addNewFeed, userLikedFeedPost } = feedSlice.actions;
+export const { addNewFeed, userLikedFeedPost, updateCommentCountInFeeds } =
+  feedSlice.actions;
 
 export default feedSlice.reducer;

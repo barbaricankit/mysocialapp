@@ -13,12 +13,12 @@ const PrivateRoute = ({ path, ...props }) => {
     if (data?.token && status === "idle") {
       dispatch(verifyToken(data.token));
     } else if (!data) {
-      navigate("/");
+      navigate("/login");
     }
   }, [token, dispatch, navigate, status]);
   useEffect(() => {
     if (status === "error") {
-      navigate("/");
+      navigate("/login");
     }
   }, [status, navigate]);
 

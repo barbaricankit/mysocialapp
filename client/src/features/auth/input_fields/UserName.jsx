@@ -11,7 +11,9 @@ const UserName = () => {
       <Input
         type='text'
         value={username}
-        placeholder='Enter Username'
+        placeholder='Username'
+        bg='white'
+        color='black'
         onChange={(e) => dispatch(enteredUsername({ value: e.target.value }))}
       />
     </Box>

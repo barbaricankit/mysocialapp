@@ -11,18 +11,23 @@ const SignIn = () => {
   const navigateTo = useLocation();
   console.log({ navigateTo });
   useEffect(() => {
-    console.log("Sign IN ka useEffect", { status });
     if (status === "success") {
       navigateTo.state?.from
         ? navigate(`/${navigateTo.state.from}`)
-        : navigate("/feed");
+        : navigate("/");
     }
   }, [status, navigateTo, navigate]);
   return (
     <>
       <Error status={status} error={error} />
       <Loader status={status} />
-      <Flex flexDir='column' justifyItems='center' alignItems='center' m={4}>
+      <Flex
+        flexDir='column'
+        justifyContent='center'
+        alignItems='center'
+        w='100vw'
+        h='100vh'
+        bg='linear-gradient(to right, #2193b0, #6dd5ed)'>
         <UserName />
         <Password />
         <SignInButton />

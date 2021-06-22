@@ -23,14 +23,22 @@ const SignUp = () => {
     if (status === "success") {
       navigateTo.state?.from
         ? navigate(`/${navigateTo.state.from}`)
-        : navigate("/feed");
+        : navigate("/");
     }
   }, [status, navigateTo, navigate]);
   return (
     <>
       <Loader status={status} />
       <Error status={status} error={error} />
-      <Flex flexDir='column' alignContent='center' mt='auto' h='100%' w='100%'>
+      <Flex
+        flexDir='column'
+        alignContent='center'
+        mt='auto'
+        justifyContent='center'
+        alignItems='center'
+        w='100vw'
+        h='100vh'
+        bg='linear-gradient(to right, #2193b0, #6dd5ed)'>
         <FirstName />
         <LastName />
         <Email />

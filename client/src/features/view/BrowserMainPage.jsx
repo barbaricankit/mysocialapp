@@ -18,7 +18,7 @@ const BrowserMainPage = () => {
         {/* <Route path='/' element={<Login />} />
         <Route path='/signin' element={<SignIn />} />
         <Route path='/signup' element={<SignUp />} /> */}
-        <Route path='/feed' element={<BrowserFeed />} />
+        <Route path='/' element={<BrowserFeed />} />
         <Route path='/explorepeople' element={<UsersToFollow />} />
         <Route path='/:username' element={<Profile />} />
         <Route path='/:username/status/:id' element={<Post />} />

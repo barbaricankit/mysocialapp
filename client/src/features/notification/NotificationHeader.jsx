@@ -7,7 +7,7 @@ const NotificationHeader = () => {
   return (
     <>
       <Flex alignItems='center' p={2} pt={4} w='100%'>
-        <BiArrowBack fontSize='x-large' onClick={() => navigate("/feed")} />
+        <BiArrowBack fontSize='x-large' onClick={() => navigate("/")} />
 
         <Text fontSize='large' ml={3} fontWeight='700'>
           Notifications

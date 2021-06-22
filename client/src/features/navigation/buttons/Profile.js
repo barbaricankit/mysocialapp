@@ -7,7 +7,10 @@ const Profile = () => {
   const { mobileView, btnColor, onToggle, tabView } = useTheme();
   const { user } = useSelector((state) => state.auth);
   return (
-    <NavLink to={`/${user.username}`} activeStyle={{ fontWeight: "bold" }}>
+    <NavLink
+      to={`/${user.username}`}
+      activeStyle={{ fontWeight: "bold" }}
+      state={user}>
       <Flex
         alignItems='center'
         justifyContent='flex-start'

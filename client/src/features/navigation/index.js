@@ -8,7 +8,7 @@ import {
 } from "./buttons/index";
 
 import NavDetails from "./NavDetails";
-import FollowersAndFollowing from "./Followers";
+import FollowersAndFollowing from "./FollowersAndFollowing";
 import UserName from "./UserName";
 import NavHeader from "./NavHeader";
 import UserDetail from "./UserDetail";

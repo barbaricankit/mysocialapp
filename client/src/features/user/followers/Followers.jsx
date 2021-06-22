@@ -1,38 +1,49 @@
-import { useSelector } from "react-redux";
+import { useSelector ,useDispatch} from "react-redux";
+import { useEffect } from "react";
 import { Flex } from "@chakra-ui/layout";
 import { Button } from "@chakra-ui/button";
 import { Avatar, Box, Text } from "@chakra-ui/react";
-import Loader from "../../utils/Loader";
-import Error from "../../utils/Error";
-import FollowerFollowing from "../FollowerFollowing";
-const Followers = () => {
-  const { status, followers, error } = useSelector((state) => state.followers);
-  const { user } = useSelector((state) => state.auth);
+import {fetchFollowers,FollowerFollowing,Error,Loader} from "."
+import { useLocation, useParams } from "react-router";
+import FollowButton from "../FollowButton";
+import { UserName } from "../../navigation";
+import UserAvatar from "../../utils/UserAvatar";
 
-  const findIsUserFollowing = (followerid) =>
-    user?.following.find((id) => id === followerid);
-  console.log({ followers });
+const Followers = () => {
+  const { status, followers, error ,user} = useSelector((state) => state.followers);
+  const { token } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+  const {username}=useParams();
+  
+
+  // const findIsUserFollowing = (followerid) =>
+  //   state?.user?.following.find((id) => id === followerid);
+
+    useEffect(() => {
+    if (user.username!==username.split("@")[1]) {
+      dispatch(fetchFollowers({token,username}));
+    }
+    // eslint-disable-next-line
+  },[]);
+
   return (
     <>
-      <FollowerFollowing />
+      <FollowerFollowing user={user}/>
 
       <Loader status={status} />
       <Error status={status} error={error} />
       <Box p={3}>
-        {followers?.map((user) => (
-          <Flex width='100%' key={user._id}>
-            <Avatar name={user.firstname + " " + user.lastname} />
-            <Box>
-              <Flex justifyContent='space-between' width='100%'>
-                <Box>
-                  <Text>{user.firstname + " " + user.lastname}</Text>
-                  <Text>@{user.username}</Text>
-                </Box>
-                <Button>
-                  {findIsUserFollowing(user._id) ? "Following" : "Follow"}
-                </Button>
-              </Flex>
-            </Box>
+        {user.username===username.split("@")[1] && followers?.map((user) => (
+          <Flex width='100%' key={user._id} justifyContent='space-between' alignItems='center'>
+            <Flex m={2} alignItems='center'>
+            <UserAvatar name={user.fullname} />
+           
+
+            <UserName user={user} />
+                </Flex>
+                <FollowButton user={user} />
+              
+          
           </Flex>
         ))}
       </Box>

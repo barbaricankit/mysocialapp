@@ -15,6 +15,7 @@ import Notifications from "../notification/Notifications";
 import Followers from "../user/followers/Followers";
 import Following from "../user/following/Following";
 import UsersToFollow from "../user/UsersToFollow";
+import BookMarksPage from "../navigation/BookMarksPage"
 import { Profile } from "../profile";
 export {
   BrowserRightSideBar,
@@ -34,5 +35,5 @@ export {
   Following,
   UsersToFollow,
   Profile,
-  BrowserMainPage,
+  BrowserMainPage,BookMarksPage
 };

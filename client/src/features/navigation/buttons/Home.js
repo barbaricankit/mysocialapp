@@ -5,7 +5,7 @@ import { useTheme } from "../../../theme-context/theme.context";
 const Home = () => {
   const { mobileView, onToggle, btnColor, tabView } = useTheme();
   return (
-    <NavLink to='/feed' activeStyle={{ fontWeight: "bold" }}>
+    <NavLink to='/' activeStyle={{ fontWeight: "bold" }}>
       <Flex
         alignItems='center'
         justifyContent='flex-start'

@@ -11,7 +11,9 @@ const Email = () => {
       <Input
         type='email'
         value={email}
-        placeholder='Enter Email'
+        placeholder='Email'
+        bg='white'
+        color='black'
         onChange={(e) => dispatch(enteredEmail({ value: e.target.value }))}
       />
     </Box>

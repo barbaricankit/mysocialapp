@@ -14,11 +14,14 @@ const Password = () => {
       <Input
         type={showPassword ? "text" : "password"}
         value={password}
-        placeholder='Enter Password'
+        placeholder='Password'
+        bg='white'
+        color='black'
         onChange={(e) => dispatch(enteredPassword({ value: e.target.value }))}
       />
       <BsFillEyeFill
         className='btn_show_pwd'
+        color='rgb(29, 161, 242)'
         onClick={() => setShowPassword(!showPassword)}
       />
     </Box>

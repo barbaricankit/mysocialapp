@@ -1,16 +1,18 @@
 import { Flex } from "@chakra-ui/layout";
 import { Box, Button, useDisclosure } from "@chakra-ui/react";
-import { useSelector } from "react-redux";
 import { Avatar } from "@chakra-ui/avatar";
 import UserName from "../navigation/UserName";
-import FollowersAndFollowing from "../navigation/Followers";
+import FollowersAndFollowing from "../navigation/FollowersAndFollowing";
 import EditProfileModal from "./EditProfile";
+import FollowButton from "../user/FollowButton"
 import { UserDetails } from ".";
-const ProfileDetails = ({ btnColor }) => {
-  const {
-    auth: { user },
-  } = useSelector((state) => state);
+import { useSelector } from "react-redux";
+import UserAvatar from "../utils/UserAvatar";
+const ProfileDetails = ({ user }) => {
   const { isOpen, onClose, onOpen } = useDisclosure();
+  const {user:loginedUser}=useSelector((state)=>state.auth)
+  console.log({profiledetails:user})
+  console.log({loginedUser})
   return (
     <>
       <Flex
@@ -20,14 +22,17 @@ const ProfileDetails = ({ btnColor }) => {
         w='100%'
         justifyContent='space-between'>
         <Box>
-          <Avatar name={user.firstname + " " + user.lastname} size='lg' />
+        <UserAvatar name={user?.fullname} size='lg' />
+          {/* <Avatar name={user.firstname + " " + user.lastname} size='lg' /> */}
         </Box>
-        <Button onClick={onOpen}>Edit Profile</Button>
+        {loginedUser?._id===user?._id ?<Button onClick={onOpen}>Edit Profile</Button>:(<FollowButton user={user} />)}
+        
       </Flex>
-      <UserName size={"lg"} user={user} />
+      <Box pl={3}>
+      <UserName size={"lg"} user={user} /></Box>
       <UserDetails />
       <Box p={3} pt={2}>
-        <FollowersAndFollowing />
+        <FollowersAndFollowing user={user} />
       </Box>
       <EditProfileModal isOpen={isOpen} onClose={onClose} />
     </>

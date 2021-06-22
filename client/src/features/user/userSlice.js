@@ -28,14 +28,47 @@ export const postFollowedUser = createAsyncThunk(
     return response.data;
   }
 );
+export const getSearchedUsers = createAsyncThunk(
+  "get/searchedUsers",
+  async (postData) => {
+    const { token, value: searchedText } = postData;
+    if (searchedText) {
+      const response = await axios({
+        method: "POST",
+        url: `${URL}/user/searchedUser`,
+        headers: { Authorization: `Bearer ${token}` },
+        data: { searchedText },
+      });
+      return response.data;
+    }
+    return { success: true, users: [] };
+  }
+);
 const userSlice = createSlice({
   name: "user",
   initialState: {
     status: "idle",
     usersToFollow: [],
     error: "",
+    searchedUserResult: [],
   },
+
   extraReducers: {
+    [getSearchedUsers.pending]: (state) => {
+      state.status = "loading";
+    },
+    [getSearchedUsers.fulfilled]: (state, action) => {
+      console.log(action.payload);
+      if (action.payload.success) {
+        state.status = "success";
+        state.searchedUserResult = action.payload.users;
+      }
+    },
+    [getSearchedUsers.rejected]: (state, action) => {
+      state.status = "error";
+      state.error = "Something went wrong, please try again later";
+      console.log(action.error.message);
+    },
     [fetchUserToFollow.pending]: (state) => {
       state.status = "loading";
     },

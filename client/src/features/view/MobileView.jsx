@@ -13,15 +13,16 @@ import {
   Following,
   UsersToFollow,
   Profile,
+  BookMarksPage,
 } from ".";
 
 const MobileView = () => {
   return (
     <Routes>
-      <Route path='/' element={<Login />} />
+      <Route path='/login' element={<Login />} />
       <Route path='/signin' element={<SignIn />} />
       <Route path='/signup' element={<SignUp />} />
-      <PrivateRoute path='/feed' element={<FeedPage />} />
+      <PrivateRoute path='/' element={<FeedPage />} />
       <PrivateRoute path='/explorepeople' element={<UsersToFollow />} />
       <PrivateRoute path='/:username' element={<Profile />} />
       <PrivateRoute path='/compose/tweet' element={<AddNewTweet />} />
@@ -29,6 +30,7 @@ const MobileView = () => {
       <PrivateRoute path='/:userId/notifications' element={<Notifications />} />
       <PrivateRoute path='/:username/followers' element={<Followers />} />
       <PrivateRoute path='/:username/following' element={<Following />} />
+      <PrivateRoute path='/:username/bookmarks' element={<BookMarksPage />} />
     </Routes>
   );
 };

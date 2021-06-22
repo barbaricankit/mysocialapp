@@ -1,17 +1,20 @@
 import { Flex, Text } from "@chakra-ui/layout";
 import { useTheme } from "../../theme-context/theme.context";
+import { UserName } from "../navigation";
+import UserAvatar from "../utils/UserAvatar";
 
 const PostUserDetails = ({ post }) => {
   const { btnColor } = useTheme();
   return (
-    <Flex flexDir='column'>
-      <Text fontWeight='500'>
-        {post?.user?.firstname + " " + post?.user?.lastname}
-      </Text>
-      <Text fontWeight='300' color={btnColor}>
-        @{post?.user?.username}
-      </Text>
-    </Flex>
+    
+       <Flex m={2} alignItems='center'>
+          <UserAvatar name={post?.user?.fullname} />
+         
+
+          <UserName user={post?.user} />
+              </Flex>
+     
+   
   );
 };
 export default PostUserDetails;

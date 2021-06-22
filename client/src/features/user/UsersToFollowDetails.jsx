@@ -9,7 +9,7 @@ const UsersToFollowDetails = ({ user }) => {
       <hr />
       <Flex justifyContent='space-between' alignItems='center'>
         <Flex m={2} alignItems='center'>
-          <UserAvatar name={user.firstname + " " + user.lastname} />
+          <UserAvatar name={user.fullname} />
           <UserName user={user} />
         </Flex>
         <FollowButton user={user} />

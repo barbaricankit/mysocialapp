@@ -20,7 +20,7 @@ const TweetHeader = ({ tweet }) => {
         p={2}
         pt={4}
         w='100%'>
-        <BiArrowBack fontSize='x-large' onClick={() => navigate("/feed")} />
+        <BiArrowBack fontSize='x-large' onClick={() => navigate("/")} />
 
         <TweetButton />
       </Flex>
