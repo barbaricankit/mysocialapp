@@ -7,7 +7,22 @@ const {
   updateUserDetails,
 } = require("../middleware/user");
 const { createToken, verifyToken } = require("../middleware/auth");
+const Users = require("../models/user.model");
 
+router.route("/searchedUser").post(verifyToken, async (req, res) => {
+  const { searchedText } = req.body;
+  const regex = { $regex: searchedText, $options: "i" };
+  const users = await Users.find({
+    $or: [
+      { firstname: regex },
+      { lastname: regex },
+      { username: regex },
+      { fullname: regex },
+    ],
+  });
+  users.forEach((user) => (user.password = undefined));
+  res.json({ success: true, users });
+});
 router.route("/signup").post(newUser, createToken, async (req, res) => {
   const { token, user } = req;
   user.password = undefined;

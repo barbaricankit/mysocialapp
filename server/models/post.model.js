@@ -5,7 +5,7 @@ const postSchema = new Schema(
   {
     user: { type: Schema.Types.ObjectId, ref: "User" },
     description: String,
-    comments: Number,
+    comments: {type:Number,default:0},
     likes: [{ type: Schema.Types.ObjectId, ref: "User" }],
     retweet: Number,
     attachment: { type: Object },

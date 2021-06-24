@@ -1,5 +1,5 @@
 const Comments = require("../models/comment.model");
-
+const Posts =require("../models/post.model")
 const addNewComment = async (req, res, next) => {
   const { user, postId } = req;
 
@@ -10,18 +10,25 @@ const addNewComment = async (req, res, next) => {
     description,
     post: postId,
   });
-  const posts = await Posts.findById(postId);
-  posts.comment += 1;
+  const post = await Posts.findById(postId);
+  post.comments += 1;
   req.postId = postId;
   await newComment.save();
-  await posts.save();
-  req.comment = newComment;
-  next();
+  await post.save();
+  if(post.user===user._id)
+  {
+    const comment = await newComment.populate("user").execPopulate();
+    comment.user.password = undefined;
+    res.json({ success: true, comments: comment });
+  }else{
+    req.comment = newComment;
+  req.post=post
+  next();}
 };
 
 const commentNotification = async (req, res, next) => {
-  const { user } = req;
-  req.notifiedUserIds = user.followers;
+  const { post} = req;
+  req.notifiedUserIds = [post.user];
   req.notification_type = "COMMENT_TYPE";
   next();
 };

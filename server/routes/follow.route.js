@@ -22,8 +22,23 @@ router
       body: { followId },
     } = req;
     const followUser = await Users.findById(followId);
-    user.following.push(followId);
-    followUser.followers.push(user._id);
+    let addedFollowing = false;
+    user.following.forEach((followingid, index1) => {
+      if (followingid.toString() === followId.toString()) {
+        user.following.splice(index1, 1);
+        addedFollowing = true;
+
+        followUser.followers.forEach((followerId, index2) => {
+          if (followerId.toString() === user._id.toString()) {
+            followUser.followers.splice(index2, 1);
+          }
+        });
+      }
+    });
+    if (!addedFollowing) {
+      user.following.push(followId);
+      followUser.followers.push(user._id);
+    }
     await user.save();
     await followUser.save();
     res.json({ success: true, followId });

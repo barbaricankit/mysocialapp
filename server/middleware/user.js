@@ -6,10 +6,11 @@ const newUser = async (req, res, next) => {
   const { firstname, lastname, username, password, email } = req.body;
   const salt = await bcrypt.genSalt(saltRounds);
   const hash = await bcrypt.hash(password, salt);
-
+  const fullname = firstname + " " + lastname;
   const newUser = new Users({
     firstname,
     lastname,
+    fullname,
     username,
     email,
     password: hash,
@@ -42,11 +43,12 @@ const validateCredentials = async (req, res, next) => {
 const updateUserDetails = async (req, res, next) => {
   const { user } = req;
   const { firstname, lastname, email, bio } = req.body.user;
+  const fullname = firstname + " " + lastname;
   user.firstname = firstname;
   user.lastname = lastname;
   user.email = email;
   user.bio = bio;
-
+  user.fullname = fullname;
   await user.save();
   user.password = undefined;
   res.json({ success: true, user });

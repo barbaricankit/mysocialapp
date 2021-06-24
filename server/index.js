@@ -14,6 +14,7 @@ const followerUserRouter = require("./routes/followers.route");
 const notificationRouter = require("./routes/notification.route");
 const likedTweetRouter = require("./routes/liked.route");
 const followRouter = require("./routes/follow.route");
+const profileRouter = require("./routes/profile.route");
 const commentRouter = require("./routes/comment.route");
 const bookmarkRouter = require("./routes/bookmarks.route");
 const { verifyToken } = require("./middleware/auth");
@@ -28,6 +29,7 @@ app.use("/comment", verifyToken, commentRouter);
 app.use("/notification", verifyToken, notificationRouter);
 app.use("/liked", verifyToken, likedTweetRouter);
 app.use("/bookmarks", verifyToken, bookmarkRouter);
+app.use("/profile", verifyToken, profileRouter);
 app.get("/", async (req, res) => {
   res.json({ success: true, message: "Social Media Server" });
 });

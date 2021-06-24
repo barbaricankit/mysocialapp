@@ -2,15 +2,25 @@ const express = require("express");
 const router = express.Router();
 const Users = require("../models/user.model");
 
+router.param("username", async (req, res, next, username) => {
+  console.log({username})
+  const userDetails = await Users.findOne({ username });
+  req.userDetails = userDetails;
+  console.log({userDetails})
+  next();
+});
+
 router
-  .route("/")
+  .route("/:username")
   .get(async (req, res) => {
-    const { user } = req;
+    const { userDetails } = req;
 
-    const { followers } = await user.populate("followers").execPopulate();
-
-    res.json({ success: true, followers });
+    const { followers } = await userDetails.populate("followers").execPopulate();
+    userDetails.password=undefined
+    res.json({ success: true, followers,user:userDetails });
   })
+  router
+  .route("/")
   .post(async (req, res) => {
     const { user } = req;
     const { followerId } = req.body;
