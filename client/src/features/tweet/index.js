@@ -18,10 +18,8 @@ import { FaGlobeAmericas } from 'react-icons/fa';
 import { useState } from 'react';
 import { MdEdit } from 'react-icons/md';
 import { BsCardImage } from 'react-icons/bs';
-
 import { useEffect, useRef } from 'react';
 import { Textarea } from '@chakra-ui/react';
-import emojis from 'emoji.json';
 import { addEmojis } from './tweetSlice';
 import { Error, Loader } from '../index';
 import { FaTimesCircle } from 'react-icons/fa';
@@ -29,6 +27,7 @@ import { addNewFeed } from '../feed/feedSlice';
 import { useNavigate } from 'react-router-dom';
 import { BiArrowBack } from 'react-icons/bi';
 import { NavLink } from 'react-router-dom';
+
 export {
 	Image,
 	BiArrowBack,
@@ -44,7 +43,6 @@ export {
 	TweetHeader,
 	Compose,
 	ShowImage,
-	emojis,
 	addEmojis,
 	uploadImage,
 	deleteImage,
