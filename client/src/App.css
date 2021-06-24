@@ -1,7 +1,8 @@
 @import "./features/feed/feed.css";
 @import "./features/auth/auth.css";
 @import "./features/view/view.css";
-
+@import "./features/auth/auth.css";
+@import './features/auth/input_fields/input.css';
 .App {
   width: 100vw;
   min-height: 100vh;

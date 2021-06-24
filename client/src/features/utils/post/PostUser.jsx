@@ -1,6 +1,4 @@
-import { Flex, Text } from "@chakra-ui/layout";
-import { useTheme } from "../../../theme-context/theme.context";
-import { PostDate } from ".";
+import { PostDate,useTheme,Flex, Text } from ".";
 
 const PostUser = ({ post }) => {
   const { btnColor } = useTheme();

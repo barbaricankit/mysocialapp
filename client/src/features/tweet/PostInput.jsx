@@ -1,7 +1,4 @@
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useRef } from "react";
-import { Textarea } from "@chakra-ui/react";
-import { ShowImage, newPost } from ".";
+import { ShowImage, newPost,Textarea, useEffect, useRef,useDispatch, useSelector  } from ".";
 
 const MIN_TEXT_AREA_HEIGHT = 35;
 const PostInput = () => {

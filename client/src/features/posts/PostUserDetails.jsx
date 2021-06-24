@@ -1,14 +1,12 @@
-import { Flex } from "@chakra-ui/layout";
-import { UserName } from "../navigation";
-import UserAvatar from "../utils/UserAvatar";
+import { Flex, UserAvatar, UserName } from '.';
 
 const PostUserDetails = ({ post }) => {
-
-  return (
-       <Flex m={2} alignItems='center'>
-          <UserAvatar name={post?.user?.fullname} />
-          <UserName user={post?.user} />
-        </Flex>
-  );
+	return (
+		<Flex m={2} alignItems='center'>
+			<UserAvatar name={post?.user?.fullname} />
+			<UserName user={post?.user} />
+		</Flex>
+	);
 };
 export default PostUserDetails;
+

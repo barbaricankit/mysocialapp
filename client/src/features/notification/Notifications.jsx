@@ -1,29 +1,32 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import Error from "../utils/Error";
-import Loader from "../utils/Loader";
-import { fetchNotificatons } from "./notificationSlice";
-import NotificationHeader from "./NotificationHeader";
-import NotificationDetails from "./NotificationDetails";
+import {
+	Loader,
+	Error,
+	useDispatch,
+	useSelector,
+	useEffect,
+	NotificationHeader,
+	NotificationDetails,
+	fetchNotificatons
+} from '.';
 
 const Notifications = () => {
-  const { status, notifications } = useSelector((state) => state.notification);
-  const { token } = useSelector((state) => state.auth);
-  const dispatch = useDispatch();
-  useEffect(() => {
-    if (status === "idle") {
-      dispatch(fetchNotificatons(token));
-    }
-  });
-  console.log({ notifications });
-  return (
-    <>
-      <Loader status={status} />
-      <Error status={status} />
-      <NotificationHeader />
-      <NotificationDetails />
-    </>
-  );
+	const { status } = useSelector((state) => state.notification);
+	const { token } = useSelector((state) => state.auth);
+	const dispatch = useDispatch();
+	useEffect(() => {
+		if (status === 'idle') {
+			dispatch(fetchNotificatons(token));
+		}
+	});
+	
+	return (
+		<>
+			<Loader status={status} />
+			<Error status={status} />
+			<NotificationHeader />
+			<NotificationDetails />
+		</>
+	);
 };
 
 export default Notifications;

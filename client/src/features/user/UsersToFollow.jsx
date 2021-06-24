@@ -1,37 +1,45 @@
-import { Box, Heading } from "@chakra-ui/react";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchUserToFollow, UsersToFollowDetails, Loader } from ".";
+import {
+	Box,
+	Heading,
+	useEffect,
+	useDispatch,
+	useSelector,
+	fetchUserToFollow,
+	UsersToFollowDetails,
+	Loader,
+	UsersToFollowHeader,
+	useTheme
+} from '.';
 
 const UsersToFollow = () => {
-  const {
-    user: { status, usersToFollow },
-    auth: { token },
-  } = useSelector((state) => state);
-  const dispatch = useDispatch();
-  useEffect(() => {
-    if (status === "idle") {
-      dispatch(fetchUserToFollow(token));
-    }
-  });
+	const { user: { status, usersToFollow }, auth: { token } } = useSelector((state) => state);
+	const dispatch = useDispatch();
+	const { mobileView, browserView,lgTabView } = useTheme();
+	useEffect(() => {
+		if (status === 'idle') {
+			dispatch(fetchUserToFollow(token));
+		}
+	});
 
-  return (
-    <>
-      <Loader status={status} />
+	return (
+		<>
+			<Loader status={status} />
+			{mobileView && <UsersToFollowHeader />}
+			<Box>
+				{(browserView||lgTabView) && (
+					<Heading size='md' m={2}>
+						You might follow
+					</Heading>
+				)}
 
-      <Box>
-        <Heading size='md' m={2}>
-          You might follow
-        </Heading>
-
-        {usersToFollow?.map((user) => (
-          <Box key={user._id}>
-            <UsersToFollowDetails user={user} />
-          </Box>
-        ))}
-      </Box>
-    </>
-  );
+				{usersToFollow.map((user) => (
+					<Box key={user._id}>
+						<UsersToFollowDetails user={user} />
+					</Box>
+				))}
+			</Box>
+		</>
+	);
 };
 
 export default UsersToFollow;

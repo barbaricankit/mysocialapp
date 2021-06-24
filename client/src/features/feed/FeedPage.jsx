@@ -1,31 +1,25 @@
-import { Box } from "@chakra-ui/layout";
-import { Slide } from "@chakra-ui/transition";
-import { Feeds } from ".";
-import { useTheme } from "../../theme-context/theme.context";
-import Header from "../header/Header";
-import Navigation from "../navigation/Navigation";
-import ComposeFloatingButton from "../tweet/ComposeFloatingButton";
+import { Feeds, Box, Slide, SearchFloatingButton, ComposeFloatingButton, Navigation, useTheme, FeedHeader } from '.';
+
 const FeedPage = () => {
-  const { mobileView, isOpen, bodyBg, opaqueBg, tabView } = useTheme();
+	const { mobileView, isOpen, bodyBg, opaqueBg, browserView } = useTheme();
+	const background = isOpen ? opaqueBg : bodyBg;
 
-  const background = isOpen ? opaqueBg : bodyBg;
+	return (
+		<Box>
+			{mobileView && (
+				<Slide direction='left' in={isOpen} className='nav_slide'>
+					<Navigation />
+				</Slide>
+			)}
 
-  return (
-    <>
-      {mobileView && (
-        <Slide direction='left' in={isOpen} className='nav_slide'>
-          <Navigation />
-        </Slide>
-      )}
-
-      <Box ml={!mobileView & !tabView ? "4rem" : "0"}>
-        <Header bg={background} />
-        <hr />
-        <Feeds bg={background} />
-      </Box>
-
-      {mobileView && <ComposeFloatingButton />}
-    </>
-  );
+			<Box ml={!mobileView & !browserView ? '4rem' : '0'}>
+				<FeedHeader bg={background} />
+				<hr />
+				<Feeds bg={background} />
+			</Box>
+			{mobileView && <SearchFloatingButton className='search_btn_mobile_view' />}
+			{mobileView && <ComposeFloatingButton />}
+		</Box>
+	);
 };
 export default FeedPage;

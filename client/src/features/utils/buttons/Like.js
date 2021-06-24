@@ -1,11 +1,7 @@
-import { Flex, Text } from "@chakra-ui/layout";
-import { FaRegHeart } from "react-icons/fa";
-import { useDispatch, useSelector } from "react-redux";
-import { useTheme } from "../../../theme-context/theme.context";
-import { userLikedFeedPost } from "../../feed/feedSlice";
-import { userLikedComment } from "../../posts/postSlice";
-import { userLikedProfilePost } from "../../profile/profileSlice";
-import { likeComment, likePost } from ".";
+
+import { FaRegHeart,likeComment, likePost,	userLikedFeedPost,
+	userLikedComment,
+	userLikedProfilePost,useTheme,useDispatch, useSelector, Flex, Text } from ".";
 
 const Likes = ({ post, isComment, page }) => {
   const { btnColor } = useTheme();

@@ -1,14 +1,9 @@
-import ColorModeSwitcher from "./ColorModeSwitcher";
-import { Flex, Text, HStack } from "@chakra-ui/layout";
-import { Avatar } from "@chakra-ui/avatar";
-import { useTheme } from "../../theme-context/theme.context";
-import { useSelector } from "react-redux";
-import { Box } from "@chakra-ui/react";
+import { ColorModeSwitcher,Flex, Text, HStack,Avatar,useTheme,useSelector,Box } from ".";
 
-const Header = ({ bg }) => {
+const FeedHeader = ({ bg }) => {
   const { onToggle, mobileView, userProfileRef } = useTheme();
   const { user } = useSelector((state) => state.auth);
-  console.log({ bg });
+  
   return (
     <Box position='sticky' top='0' zIndex={1}>
       <Flex
@@ -24,7 +19,7 @@ const Header = ({ bg }) => {
           <Avatar
             ref={userProfileRef}
             size='sm'
-            name={user.firstname + " " + user.lastname}
+            name={user.fullname}
             onClick={() => mobileView && onToggle()}
           />
           <Text fontWeight='1000' fontSize='xl' pl={3}>
@@ -37,4 +32,4 @@ const Header = ({ bg }) => {
     </Box>
   );
 };
-export default Header;
+export default FeedHeader;

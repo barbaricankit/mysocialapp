@@ -1,16 +1,13 @@
-import { Box } from "@chakra-ui/layout";
-import { Text } from "@chakra-ui/react";
+import { useSelector, Text, Box } from '.';
 
-import { useSelector } from "react-redux";
+const UserDetails = () => {
+	const { user } = useSelector((state) => state.auth);
 
-const UserDetails = ({ bg }) => {
-  const { user } = useSelector((state) => state.auth);
-
-  return (
-    <Box>
-      <Text>{user.bio}</Text>
-    </Box>
-  );
+	return (
+		<Box>
+			<Text>{user.bio}</Text>
+		</Box>
+	);
 };
 
 export default UserDetails;

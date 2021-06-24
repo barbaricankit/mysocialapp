@@ -1,7 +1,7 @@
-import { Text, Box } from "@chakra-ui/layout";
-import { Image } from "@chakra-ui/react";
+import { Text, Box ,Image,useTheme} from ".";
 
 const PostDescription = ({ post, size }) => {
+  const {mobileView}=useTheme();
   return (
     <Box alignSelf='flex-start'>
       <Box>
@@ -12,6 +12,7 @@ const PostDescription = ({ post, size }) => {
           <Image
             src={post?.attachment?.secure_url}
             alt={post?.attachment?.original_filename}
+            w={mobileView && "280px"}
             pt={2}
           />
         )}

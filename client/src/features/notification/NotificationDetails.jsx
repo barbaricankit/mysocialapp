@@ -1,40 +1,9 @@
-import { useSelector } from "react-redux";
-import { Flex } from "@chakra-ui/layout";
-import { Avatar, Box, Text } from "@chakra-ui/react";
-import { NavLink } from "react-router-dom";
+import { useSelector, Flex, Avatar, Box, Text, NavLink ,notificationType} from ".";
+
 
 const NotificationDetails = () => {
   const { notifications } = useSelector((state) => state.notification);
-
-  const notificationDetails = (notification) => {
-    const name = `${notification.user.fullname}`;
-    if (notification.notification_type === "POST_TYPE") {
-      return (
-        <Box>
-          Recent tweet from <strong>{name}</strong>
-        </Box>
-      );
-    } else if (notification.notification_type === "LIKED_TYPE") {
-      return (
-        <Box>
-          <strong>{name}</strong> liked your tweet
-        </Box>
-      );
-    }else if(notification.notification_type === "COMMENT_TYPE"){
-      return (
-        <Box>
-          <strong>{name}</strong> commented on your post
-        </Box>)
-    }else if(notification.notification_type === "FOLLOWER_TYPE"){
-      return (
-        <Box>
-          <strong>{name}</strong> followed you
-        </Box>
-      );
-    }
-    
-  };
-
+  
   return (
     <>
       {notifications?.notifications?.map((notification) => (
@@ -48,8 +17,8 @@ const NotificationDetails = () => {
                 notification.user.fullname
               }
             />
-            <Text mt={2}>{notificationDetails(notification)}</Text>
-            <Text mt={2} fontSize="md">{notification.post.description}</Text>
+            <Text mt={2}>{notificationType(notification)}</Text>
+            <Text mt={2} fontSize="sm">{notification.post.description}</Text>
           </Flex>
           <hr />
         </Box></NavLink>

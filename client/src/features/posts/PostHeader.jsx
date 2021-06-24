@@ -1,27 +1,23 @@
-import { Flex, Heading } from "@chakra-ui/react";
-import { BiArrowBack } from "react-icons/bi";
-import { useLocation, useNavigate } from "react-router-dom";
-import moment from "moment";
-moment.locale();
+import { Box, Flex, Heading, BiArrowBack, useLocation, useNavigate } from '.';
 
 const PostHeader = () => {
-  const { state } = useLocation();
-  const navigate = useNavigate();
+	const { state } = useLocation();
+	const navigate = useNavigate();
 
-  return (
-    <>
-      <Flex alignItems='center' p={2} pt={4} w='100%'>
-        <BiArrowBack
-          fontSize='x-large'
-          onClick={() => navigate(state?.path ? `/${state.path}` : "/")}
+	return (
+		<Box>
+			<Flex alignItems='center' p={2} pt={4} w='100%'>
+				<BiArrowBack 
+        fontSize='x-large' 
+        onClick={() => navigate(state?.path ? `/${state.path}` :'/')} 
         />
-        <Heading ml={3} size='lg'>
-          Tweet
-        </Heading>
-      </Flex>
-      <hr />
-    </>
-  );
+				<Heading ml={3} size='lg'>
+					Tweet
+				</Heading>
+			</Flex>
+			<hr />
+		</Box>
+	);
 };
 
 export default PostHeader;

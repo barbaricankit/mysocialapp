@@ -1,7 +1,4 @@
-import { Flex } from "@chakra-ui/layout";
-import { Text, Box } from "@chakra-ui/react";
-import { useNavigate } from "react-router-dom";
-import { BiArrowBack } from "react-icons/bi";
+import { BiArrowBack ,useNavigate,Text, Box,Flex} from ".";
 
 const ProfileHeader = ({ user, posts }) => {
   const navigate = useNavigate();
@@ -12,7 +9,7 @@ const ProfileHeader = ({ user, posts }) => {
       <Box pl={4}>
         <Text fontWeight='500'>{user?.fullname}</Text>
         <Text fontWeight='300' color=''>
-          {posts?.length} Tweets
+        {posts?.length} Tweets
         </Text>
       </Box>
     </Flex>

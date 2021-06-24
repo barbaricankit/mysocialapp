@@ -1,33 +1,39 @@
-import { Box } from "@chakra-ui/react";
-import React from "react";
-import { Routes, Route } from "react-router-dom";
 import {
-  Post,
-  Notifications,
-  Followers,
-  Following,
-  UsersToFollow,
-  Profile,
-  BrowserFeed,
-} from ".";
+	Routes,
+	Route,
+	PostPage,
+	Notifications,
+	Followers,
+	Following,
+	PrivateRoute,
+	Profile,
+	BrowserFeed,
+	Login,
+	SignIn,
+	SignUp,
+	BrowserView,
+	SearchPage,
+	DiscoverPeople,
+	BookMarksPage
+} from '.';
 
 const BrowserMainPage = () => {
-  return (
-    <Box borderRight='1px'>
-      <Routes>
-        {/* <Route path='/' element={<Login />} />
-        <Route path='/signin' element={<SignIn />} />
-        <Route path='/signup' element={<SignUp />} /> */}
-        <Route path='/' element={<BrowserFeed />} />
-        <Route path='/explorepeople' element={<UsersToFollow />} />
-        <Route path='/:username' element={<Profile />} />
-        <Route path='/:username/status/:id' element={<Post />} />
-        <Route path='/:userId/notifications' element={<Notifications />} />
-        <Route path='/:username/followers' element={<Followers />} />
-        <Route path='/:username/following' element={<Following />} />
-      </Routes>
-    </Box>
-  );
+	return (
+		<Routes>
+			<Route path='/login' element={<Login />} />
+			<Route path='/signin' element={<SignIn />} />
+			<Route path='/signup' element={<SignUp />} />
+			<PrivateRoute path='/search' element={<BrowserView element={<SearchPage />} />} />
+			<PrivateRoute path='/' element={<BrowserView element={<BrowserFeed />} />} />
+			<PrivateRoute path='/discoverpeople' element={<BrowserView element={<DiscoverPeople />} />} />
+			<PrivateRoute path='/:username' element={<BrowserView element={<Profile />} />} />
+			<PrivateRoute path='/:username/status/:id' element={<BrowserView element={<PostPage />} />} />
+			<PrivateRoute path='/:userId/notifications' element={<BrowserView element={<Notifications />} />} />
+			<PrivateRoute path='/:username/followers' element={<BrowserView element={<Followers />} />} />
+			<PrivateRoute path='/:username/following' element={<BrowserView element={<Following />} />} />
+			<PrivateRoute path='/:username/bookmarks' element={<BrowserView element={<BookMarksPage />} />} />
+		</Routes>
+	);
 };
 
 export default BrowserMainPage;

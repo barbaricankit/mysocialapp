@@ -11,3 +11,12 @@
 .red_color {
   color: red;
 }
+
+.sign_in_page{
+  background-color: linear-gradient(to right, #2193b0, #6dd5ed);
+  width: 100vw;
+  height:100vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,12 +1,7 @@
-import { Box } from "@chakra-ui/react";
-import { useLocation, useParams } from "react-router-dom";
-import { PostFullDate, PostHeader, PostUserDetails, Reply, Comment } from ".";
-import { PostDescription, PostFooter } from "../utils";
-import { useDispatch, useSelector } from "react-redux";
-import { getPost } from "./postSlice";
-import { useEffect } from "react";
+import {Box, PostFullDate, PostHeader, PostUserDetails, Reply, Comment,useSelector,useLocation,
+	useDispatch, useParams,PostDescription, PostFooter,getPost,useEffect} from ".";
 
-const Post = () => {
+const PostPage = () => {
   const {
     feed: { feeds },
     profile: { posts },
@@ -32,7 +27,7 @@ const Post = () => {
     }
     // eslint-disable-next-line
   }, []);
-
+  console.log({POST})
   return (
     <>
       {POST && (
@@ -56,4 +51,4 @@ const Post = () => {
   );
 };
 
-export default Post;
+export default PostPage;

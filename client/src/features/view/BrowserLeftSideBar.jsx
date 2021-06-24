@@ -1,12 +1,13 @@
-import { Box } from "@chakra-ui/react";
-import { BrowserNav } from "../navigation";
-
+import { Box } from '@chakra-ui/react';
+import { BrowserNav } from '../navigation';
+import { useTheme } from '.';
 const BrowserLeftSideBar = () => {
-  return (
-    <Box borderRight='1px' pl='10rem' pr='1rem'>
-      <BrowserNav />
-    </Box>
-  );
+	const { tabView } = useTheme();
+	return (
+		<Box borderRight='1px' pl={tabView ? '1rem' : '12rem'}>
+			<BrowserNav />
+		</Box>
+	);
 };
 
 export default BrowserLeftSideBar;

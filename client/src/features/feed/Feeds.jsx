@@ -1,10 +1,4 @@
-import { Box } from "@chakra-ui/layout";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import Error from "../utils/Error";
-import Loader from "../utils/Loader";
-import { Post } from "../utils/post";
-import { fetchFeeds } from "./feedSlice";
+import {Box, useDispatch, useSelector ,useEffect,Error,Loader,Post,fetchFeeds } from ".";
 
 const Feeds = ({ bg }) => {
   const { status, feeds, error } = useSelector((state) => state.feed);
