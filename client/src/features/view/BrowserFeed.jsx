@@ -1,15 +1,15 @@
-import { Flex, useTheme, Feeds, FeedHeader, AddNewTweet } from '.';
+import { Flex, useTheme, Feeds, FeedHeader, AddNewTweet } from '.'
 
 const BrowserFeed = () => {
-	const { bodyBg } = useTheme();
+  const { bodyBg } = useTheme()
 
-	return (
-		<Flex flexDir='column'>
-			<FeedHeader bg={bodyBg} />
-			<AddNewTweet />
-			<Feeds />
-		</Flex>
-	);
-};
+  return (
+    <Flex flexDir="column">
+      <FeedHeader bg={bodyBg} />
+      <AddNewTweet />
+      <Feeds />
+    </Flex>
+  )
+}
 
-export default BrowserFeed;
+export default BrowserFeed

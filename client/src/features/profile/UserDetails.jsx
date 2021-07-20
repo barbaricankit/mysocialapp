@@ -1,13 +1,11 @@
-import { useSelector, Text, Box } from '.';
+import { Text, Box } from '.'
 
-const UserDetails = () => {
-	const { user } = useSelector((state) => state.auth);
+const UserDetails = ({ user }) => {
+  return (
+    <Box>
+      <Text ml={4}>{user.bio}</Text>
+    </Box>
+  )
+}
 
-	return (
-		<Box>
-			<Text>{user.bio}</Text>
-		</Box>
-	);
-};
-
-export default UserDetails;
+export default UserDetails
