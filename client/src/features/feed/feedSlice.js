@@ -40,6 +40,17 @@ const feedSlice = createSlice({
         }
       })
     },
+    updatePostUserDetails: (state, action) => {
+      const { firstname, lastname, email, bio } = action.payload.user
+      state.feeds.forEach((feed) => {
+        if (feed.user._id === action.payload.userId) {
+          feed.user.firstname = firstname
+          feed.user.lastname = lastname
+          feed.user.email = email
+          feed.user.bio = bio
+        }
+      })
+    },
   },
   extraReducers: {
     [fetchFeeds.pending]: (state) => {
@@ -64,6 +75,7 @@ export const {
   addNewFeed,
   userLikedFeedPost,
   updateCommentCountInFeeds,
+  updatePostUserDetails,
 } = feedSlice.actions
 
 export default feedSlice.reducer

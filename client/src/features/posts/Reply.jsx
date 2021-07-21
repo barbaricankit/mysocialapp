@@ -17,10 +17,12 @@ import {
 const Reply = ({ post }) => {
   const {
     auth: { user, token },
+    post: { status },
   } = useSelector((state) => state)
   const { secondaryColor, borderColor } = useTheme()
   const [reply, setReply] = useState('')
   const dispatch = useDispatch()
+
   const replyClick = () => {
     const postId = post._id
     dispatch(postComment({ token, postId, description: reply }))
@@ -31,7 +33,7 @@ const Reply = ({ post }) => {
   }
   return (
     <>
-      <Loader />
+      <Loader status={status} />
       <Flex p={3} justifyContent="space-between">
         <Avatar name={user.fullname} />
         <Textarea
@@ -39,9 +41,17 @@ const Reply = ({ post }) => {
           placeholder="Tweet your reply"
           outline="none"
           border="none"
+          focusBorderColor="none"
           onChange={(e) => setReply(e.target.value)}
         />
-        <Button onClick={() => replyClick()}>Reply</Button>
+        <Button
+          _hover="none"
+          bg="rgb(29, 161, 242)"
+          disabled={reply ? false : true}
+          onClick={() => replyClick()}
+        >
+          Reply
+        </Button>
       </Flex>
       <Box
         className="horizontal_line"
