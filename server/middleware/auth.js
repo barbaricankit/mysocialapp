@@ -6,7 +6,6 @@ dotenv.config()
 const SECRET_KEY = process.env.SECRET_KEY
 const verifyToken = async (req, res, next) => {
   const token = req.headers.authorization.split(' ')[1]
-  console.log({ token })
   try {
     const { userId } = jwt.verify(token, SECRET_KEY)
     if (userId) {

@@ -15,7 +15,7 @@ const bookmarkedPost = async (req, res, next) => {
   if (updateBookmark) {
     res.json({ success: true, bookmarks: user.bookmarks });
   } else {
-    user.bookmarks.push(postId);
+    user.bookmarks.unshift(postId);
     await user.save();
     res.json({ success: true, bookmarks: user.bookmarks });
   }
