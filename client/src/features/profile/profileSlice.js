@@ -58,9 +58,17 @@ const profileSlice = createSlice({
   },
   reducers: {
     userLikedProfilePost: (state, action) => {
-      state.posts.forEach((post, index) => {
-        if (post._id.toString() === action.payload.post._id.toString()) {
-          state.posts[index].likes = action.payload.post.likes
+      state.posts.forEach((post) => {
+        if (post._id.toString() === action.payload.postId.toString()) {
+          const index = post.likes.findIndex(
+            (userId) => userId === action.payload.userId,
+          )
+
+          if (index !== -1) {
+            post.likes.splice(index, 1)
+          } else {
+            post.likes.push(action.payload.userId)
+          }
         }
       })
     },
@@ -73,6 +81,18 @@ const profileSlice = createSlice({
     },
     updateBookmarkStatus: (state) => {
       state.bookMarkStatus = 'idle'
+    },
+    updateUserPost: (state, action) => {
+      const { firstname, lastname, email, bio } = action.payload.user
+      state.posts.forEach((post) => {
+        if (post.user._id === action.payload.userId) {
+          post.fullname = firstname + ' ' + lastname
+          post.user.firstname = firstname
+          post.user.lastname = lastname
+          post.user.email = email
+          post.user.bio = bio
+        }
+      })
     },
     initialProfileDetails: (state, action) => {
       const { firstname, lastname, email, bio } = action.payload.user
@@ -98,8 +118,12 @@ const profileSlice = createSlice({
       state.bio = bio
     },
     updateProfileUser: (state, action) => {
-      const { user } = action.payload
-      state.profileUser = user
+      const { firstname, lastname, email, bio } = action.payload.user
+      state.profileUser.fullname = firstname + ' ' + lastname
+      state.profileUser.firstname = firstname
+      state.profileUser.lastname = lastname
+      state.profileUser.email = email
+      state.profileUser.bio = bio
     },
   },
   extraReducers: {
@@ -108,8 +132,8 @@ const profileSlice = createSlice({
     },
     [fetchProfileDetails.fulfilled]: (state, action) => {
       if (action.payload.success) {
-        state.profileStatus = 'success'
         state.profileUser = action.payload.user
+        state.profileStatus = 'idle'
       }
     },
     [fetchProfileDetails.rejected]: (state, action) => {
@@ -159,6 +183,7 @@ export const {
   updateEmail,
   updateLastname,
   updateCommentCountInProfilePosts,
+  updateUserPost,
 } = profileSlice.actions
 
 export default profileSlice.reducer

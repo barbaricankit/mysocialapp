@@ -8,8 +8,8 @@
 }
 .delete_img {
 	position: absolute;
-	top: 0.2rem;
-	right: 3.3rem;
+	top: 0.6rem;
+	right: 1rem;
 }
 .emoji_icon {
 	margin-left: 0.7rem;
@@ -19,4 +19,9 @@
 	height: 12px;
 	border-top-width: 1px;
 	border-bottom-width: 1px;
+}
+.attachment{
+
+    padding: 0.5rem;
+  
 }

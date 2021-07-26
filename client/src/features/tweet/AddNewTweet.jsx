@@ -1,8 +1,8 @@
-import { Compose, TweetHeader, useTheme, Box } from '.'
+import { Compose, TweetHeader, useTheme, Box, Loader, useSelector } from '.'
 
 const AddNewTweet = () => {
   const { mobileView, secondaryColor, borderColor } = useTheme()
-
+  const { status } = useSelector((state) => state.tweet)
   return (
     <>
       {mobileView && <TweetHeader />}
@@ -16,6 +16,7 @@ const AddNewTweet = () => {
           borderTopColor={borderColor}
         />
       )}
+      <Loader status={status} />
     </>
   )
 }

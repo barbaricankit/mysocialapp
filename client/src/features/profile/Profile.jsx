@@ -3,7 +3,6 @@ import {
   Loader,
   ProfileHeader,
   ProfileDetails,
-  useLocation,
   useParams,
   useDispatch,
   fetchProfileDetails,
@@ -16,24 +15,28 @@ const Profile = () => {
     auth: { token },
     profile: { posts, profileStatus, profileUser },
   } = useSelector((state) => state)
-  const { state: userFromState } = useLocation()
   const dispatch = useDispatch()
   const { username } = useParams()
 
-  const user = userFromState ? userFromState : profileUser
+  const user = profileUser.username === username ? profileUser : null
+
   useEffect(() => {
-    if (user.username !== username) {
+    if (!user && profileStatus === 'idle') {
       dispatch(fetchProfileDetails({ token, username }))
     }
     //eslint-disable-next-line
-  }, [])
+  }, [user])
 
   return (
     <>
       <Loader status={profileStatus} />
-      <ProfileHeader user={user} posts={posts} />
-      <ProfileDetails user={user} />
-      <Headers />
+      {user && (
+        <>
+          <ProfileHeader user={user} posts={posts} />
+          <ProfileDetails user={user} />
+          <Headers />
+        </>
+      )}
     </>
   )
 }

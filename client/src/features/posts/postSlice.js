@@ -47,9 +47,17 @@ const postSlice = createSlice({
   },
   reducers: {
     userLikedComment: (state, action) => {
-      state.comments.forEach((comment, index) => {
-        if (comment._id.toString() === action.payload.comment._id.toString()) {
-          state.comments[index].likes = action.payload.comment.likes
+      state.comments.forEach((comment) => {
+        if (comment._id.toString() === action.payload.commentId.toString()) {
+          const index = comment.likes.findIndex(
+            (userId) => userId === action.payload.userId,
+          )
+
+          if (index !== -1) {
+            comment.likes.splice(index, 1)
+          } else {
+            comment.likes.push(action.payload.userId)
+          }
         }
       })
     },

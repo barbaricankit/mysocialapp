@@ -11,9 +11,11 @@ import {
 
 const Feeds = ({ bg }) => {
   const {
-    feed: { status, feeds, error },
-    tweet: { status: tweetStatus },
-  } = useSelector((state) => state)
+    status,
+    feeds,
+    error,
+    // tweet: { status: tweetStatus },
+  } = useSelector((state) => state.feed)
   const { token } = useSelector((state) => state.auth)
 
   const dispatch = useDispatch()
@@ -27,7 +29,7 @@ const Feeds = ({ bg }) => {
   return (
     <Box bg={bg}>
       <Loader status={status} />
-      <Loader status={tweetStatus} />
+      {/* <Loader status={tweetStatus} /> */}
       <Error status={status} error={error} />
       {feeds.map((post) => (
         <Post post={post} key={post._id} page="feeds" />

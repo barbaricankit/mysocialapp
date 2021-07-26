@@ -1,6 +1,6 @@
 import { Button, ModalFooter, useDispatch, useSelector, updateProfile } from '.'
 import { updatePostUserDetails } from '../feed/feedSlice'
-import { updateProfileUser } from './profileSlice'
+import { updateProfileUser, updateUserPost } from './profileSlice'
 
 const EditProfileFooter = ({ onClose }) => {
   const {
@@ -20,6 +20,7 @@ const EditProfileFooter = ({ onClose }) => {
       dispatch(updateProfile({ token, user: userDetails }))
       dispatch(updateProfileUser({ user: userDetails }))
       dispatch(updatePostUserDetails({ user: userDetails, userId: user._id }))
+      dispatch(updateUserPost({ user: userDetails, userId: user._id }))
     }
     onClose()
   }

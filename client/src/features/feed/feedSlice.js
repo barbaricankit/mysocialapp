@@ -27,9 +27,17 @@ const feedSlice = createSlice({
       }
     },
     userLikedFeedPost: (state, action) => {
-      state.feeds.forEach((feed, index) => {
-        if (feed._id.toString() === action.payload.post._id.toString()) {
-          state.feeds[index].likes = action.payload.post.likes
+      state.feeds.forEach((feed) => {
+        if (feed._id.toString() === action.payload.postId.toString()) {
+          const index = feed.likes.findIndex(
+            (userId) => userId === action.payload.userId,
+          )
+
+          if (index !== -1) {
+            feed.likes.splice(index, 1)
+          } else {
+            feed.likes.push(action.payload.userId)
+          }
         }
       })
     },
@@ -44,6 +52,7 @@ const feedSlice = createSlice({
       const { firstname, lastname, email, bio } = action.payload.user
       state.feeds.forEach((feed) => {
         if (feed.user._id === action.payload.userId) {
+          feed.user.fullname = firstname + ' ' + lastname
           feed.user.firstname = firstname
           feed.user.lastname = lastname
           feed.user.email = email

@@ -89,7 +89,14 @@ const authSlice = createSlice({
       localStorage.removeItem('token')
     },
     userBookmarkedPost: (state, action) => {
-      state.user.bookmarks = action.payload.bookmarks
+      const index = state.user.bookmarks.findIndex(
+        (postId) => postId === action.payload.postId,
+      )
+      if (index !== -1) {
+        state.user.bookmarks.splice(index, 1)
+      } else {
+        state.user.bookmarks.unshift(action.payload.postId)
+      }
     },
     updateUserFollowing: (state, action) => {
       const { followId } = action.payload

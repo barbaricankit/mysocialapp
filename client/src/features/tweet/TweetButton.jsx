@@ -2,7 +2,7 @@ import {
   Button,
   postNewTweet,
   addNewFeed,
-  newPost,
+  resetInputFields,
   useNavigate,
   useDispatch,
   useSelector,
@@ -18,7 +18,7 @@ const TweetButton = ({ width, padding }) => {
 
   const dispatch = useDispatch()
   const addNewPost = () => {
-    if (postText) {
+    if (postText || postImage) {
       dispatch(
         postNewTweet({ token, description: postText, attachment: postImage }),
       )
@@ -27,7 +27,7 @@ const TweetButton = ({ width, padding }) => {
   useEffect(() => {
     if (status === 'success') {
       dispatch(addNewFeed({ feed: post }))
-      dispatch(newPost({ tweet: '' }))
+      dispatch(resetInputFields())
       navigate('/')
     }
     //eslint-disable-next-line
@@ -39,7 +39,7 @@ const TweetButton = ({ width, padding }) => {
       width={width}
       p={padding}
       _hover="none"
-      disabled={postText ? false : true}
+      disabled={postText || postImage ? false : true}
       onClick={() => addNewPost()}
     >
       Tweet
