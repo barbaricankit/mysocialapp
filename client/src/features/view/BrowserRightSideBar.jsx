@@ -1,5 +1,6 @@
 import {
   useSelector,
+  Loader,
   SearchedUserList,
   SearchBox,
   useTheme,
@@ -16,6 +17,7 @@ const BrowserRightSideBar = () => {
   return (
     <Box m={4}>
       <SearchBox />
+      <Loader status={status} />
       <Box
         className="right_side_bar"
         bg={secondaryColor}

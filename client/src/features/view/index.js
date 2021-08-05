@@ -20,6 +20,7 @@ import { Feeds } from '../feed'
 import { FeedHeader } from '../header'
 import { Login, SignIn, SignUp } from '../auth'
 import { Routes, Route } from 'react-router-dom'
+import { Loader } from '../'
 import {
   SearchPage,
   SearchBox,
@@ -36,6 +37,7 @@ export {
   MobileView,
   FeedPage,
   Text,
+  Loader,
   Feeds,
   FeedHeader,
   AddNewTweet,
