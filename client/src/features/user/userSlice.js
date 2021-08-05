@@ -56,6 +56,7 @@ const userSlice = createSlice({
   reducers: {
     userEnterSearchText: (state, action) => {
       state.searchedText = action.payload.value
+      state.status = 'idle'
     },
   },
   extraReducers: {
