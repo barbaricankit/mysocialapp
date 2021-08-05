@@ -34,7 +34,7 @@ const Profile = () => {
         <>
           <ProfileHeader user={user} posts={posts} />
           <ProfileDetails user={user} />
-          <Headers />
+          <Headers user={user} />
         </>
       )}
     </>

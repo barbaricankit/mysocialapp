@@ -23,11 +23,14 @@ const Logout = () => {
       justifyContent="flex-start"
       w="100%"
       pt={4}
-      onClick={() => mobileView && onToggle()}
+      onClick={() => {
+        mobileView && onToggle()
+        logout()
+      }}
     >
       <IoIosLogOut color={btnColor} fontSize="x-large" />
       {(mobileView || browserView) && (
-        <Text pl={3} fontSize="larger" onClick={() => logout()}>
+        <Text pl={3} fontSize="larger">
           Logout
         </Text>
       )}

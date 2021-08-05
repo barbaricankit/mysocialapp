@@ -1,5 +1,6 @@
 import {
   Box,
+  Text,
   useDispatch,
   useSelector,
   useEffect,
@@ -10,12 +11,7 @@ import {
 } from '.'
 
 const Feeds = ({ bg }) => {
-  const {
-    status,
-    feeds,
-    error,
-    // tweet: { status: tweetStatus },
-  } = useSelector((state) => state.feed)
+  const { status, feeds, error } = useSelector((state) => state.feed)
   const { token } = useSelector((state) => state.auth)
 
   const dispatch = useDispatch()
@@ -34,6 +30,12 @@ const Feeds = ({ bg }) => {
       {feeds.map((post) => (
         <Post post={post} key={post._id} page="feeds" />
       ))}
+      {status === 'success' && feeds?.length === 0 && (
+        <Text p={4} fontSize="large" fontStyle="italic">
+          Please follow others to see their posts. For Follow you can go to
+          Discover aur search for a particular person.
+        </Text>
+      )}
     </Box>
   )
 }

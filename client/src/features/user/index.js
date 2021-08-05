@@ -17,7 +17,7 @@ import { BiArrowBack } from 'react-icons/bi'
 import { useCallback, useEffect, useState } from 'react'
 import { BiSearchAlt2 } from 'react-icons/bi'
 import { debounce } from 'lodash'
-import { getSearchedUsers } from './userSlice'
+import { getSearchedUsers, userEnterSearchText } from './userSlice'
 import SearchBox from '../user/SearchBox'
 import SearchedUserList from '../user/SearchedUserList'
 import SearchHeader from './SearchHeader'
@@ -44,6 +44,7 @@ export {
   SearchFloatingButton,
   UserAvatar,
   UserName,
+  userEnterSearchText,
   Box,
   Button,
   Text,

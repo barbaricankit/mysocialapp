@@ -5,7 +5,7 @@ const BrowserView = ({ element }) => {
   const { tabView } = useTheme()
 
   return (
-    <Grid templateColumns={tabView ? '1fr 7fr' : '1fr 1.5fr 1fr'}>
+    <Grid templateColumns={tabView ? '1fr 7fr' : '1fr 1.4fr 1fr'}>
       <BrowserLeftSideBar />
       <Box borderRight="1px">{element}</Box>
       {!tabView && <BrowserRightSideBar />}

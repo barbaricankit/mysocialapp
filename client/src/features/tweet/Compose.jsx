@@ -2,8 +2,6 @@ import {
   Avatar,
   Flex,
   Stack,
-  Text,
-  FaGlobeAmericas,
   useState,
   ImageUpload,
   ShowEmoji,
@@ -34,10 +32,7 @@ const Compose = () => {
               pt={8}
               pr={4}
               color="rgba(29,161,242,1.00)"
-            >
-              <FaGlobeAmericas />
-              <Text pl={2}>Everyone can reply</Text>{' '}
-            </Flex>
+            ></Flex>
             <hr />
             <Box position="relative" w="100%">
               <Flex justifyContent="space-between" m={2}>

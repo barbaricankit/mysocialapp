@@ -4,7 +4,6 @@
 @import "./features/auth/auth.css";
 @import './features/auth/input_fields/input.css';
 .App {
-  width: 100vw;
   min-height: 100vh;
 }
 hr {
