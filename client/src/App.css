@@ -1,0 +1,25 @@
+@import "./features/feed/feed.css";
+@import "./features/auth/auth.css";
+@import "./features/view/view.css";
+@import "./features/auth/auth.css";
+@import './features/auth/input_fields/input.css';
+.App {
+  min-height: 100vh;
+}
+hr {
+  width: 100%;
+}
+.nav_slide {
+  z-index: 2;
+}
+@keyframes App-logo-float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}

@@ -1,0 +1,27 @@
+.compose_btn {
+	position: fixed;
+	bottom: 1.5rem;
+	right: 1rem;
+	border-radius: 50%;
+	background-color: rgb(29, 161, 242);
+	padding: 1rem;
+}
+.delete_img {
+	position: absolute;
+	top: 0.6rem;
+	right: 1rem;
+}
+.emoji_icon {
+	margin-left: 0.7rem;
+	font-size: larger;
+}
+.horizontal_line {
+	height: 12px;
+	border-top-width: 1px;
+	border-bottom-width: 1px;
+}
+.attachment{
+
+    padding: 0.5rem;
+  
+}

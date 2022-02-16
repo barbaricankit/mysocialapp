@@ -1,0 +1,41 @@
+{
+	"name": "twitterapp",
+	"version": "0.1.0",
+	"private": true,
+	"dependencies": {
+		"@chakra-ui/react": "^1.6.3",
+		"@emotion/react": "^11.4.0",
+		"@emotion/styled": "^11.3.0",
+		"@reduxjs/toolkit": "^1.5.1",
+		"@testing-library/jest-dom": "^4.2.4",
+		"@testing-library/react": "^9.3.2",
+		"@testing-library/user-event": "^7.1.2",
+		"axios": "^0.21.1",
+		"dotenv": "^8.2.0",
+		"emoji-picker-react": "^3.4.8",
+		"framer-motion": "^4.1.17",
+		"history": "^5.0.0",
+		"lodash": "^4.17.21",
+		"moment": "^2.29.1",
+		"react": "^17.0.2",
+		"react-dom": "^17.0.2",
+		"react-icons": "^4.2.0",
+		"react-redux": "^7.2.3",
+		"react-router": "^6.0.0-beta.0",
+		"react-router-dom": "^6.0.0-beta.0",
+		"react-scripts": "4.0.3"
+	},
+	"scripts": {
+		"start": "react-scripts start",
+		"build": "react-scripts build",
+		"test": "react-scripts test",
+		"eject": "react-scripts eject"
+	},
+	"eslintConfig": {
+		"extends": "react-app"
+	},
+	"browserslist": {
+		"production": [ ">0.2%", "not dead", "not op_mini all" ],
+		"development": [ "last 1 chrome version", "last 1 firefox version", "last 1 safari version" ]
+	}
+}

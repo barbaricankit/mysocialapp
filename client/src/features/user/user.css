@@ -1,0 +1,16 @@
+.search_btn_mobile_view {
+	position: fixed;
+	bottom: 5.5rem;
+	right: 1rem;
+	border-radius: 50%;
+	background-color: rgb(29, 161, 242);
+	padding: 1rem;
+}
+.search_btn_tab_view {
+	border-radius: 50%;
+	background-color: rgb(29, 161, 242);
+	padding: 0.5rem;
+	width: 2.5rem;
+	height: 2.5rem;
+	margin-top: 0.5rem;
+}
